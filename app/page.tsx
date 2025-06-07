@@ -80,7 +80,7 @@ export default function Home() {
             <div className="flex items-center justify-between">
               <h2 className="text-3xl font-bold tracking-tight">Open Source Projects</h2>
               <Link
-                href="https://github.com"
+                href="https://github.com/roerohan"
                 className="flex items-center text-sm text-zinc-400 hover:text-emerald-500"
               >
                 View all on GitHub <ExternalLink className="ml-1 h-4 w-4" />
@@ -91,19 +91,19 @@ export default function Home() {
                 title="Cloudflare Workers Library"
                 description="A collection of utilities and middleware for Cloudflare Workers"
                 tags={["TypeScript", "Cloudflare", "Edge Computing"]}
-                githubUrl="https://github.com"
+                githubUrl="https://github.com/roerohan/cloudflare-workers-library"
               />
               <ProjectCard
                 title="WebRTC Security Scanner"
                 description="Security auditing tool for WebRTC applications"
                 tags={["Rust", "WebRTC", "Security"]}
-                githubUrl="https://github.com"
+                githubUrl="https://github.com/roerohan/webrtc-security-scanner"
               />
               <ProjectCard
                 title="Realtime Data Visualization"
                 description="Dashboard for visualizing realtime data streams"
                 tags={["React", "D3.js", "WebSockets"]}
-                githubUrl="https://github.com"
+                githubUrl="https://github.com/roerohan/realtime-data-viz"
               />
             </div>
           </TabsContent>
