@@ -9,12 +9,19 @@ import ProjectCard from "@/components/project-card"
 import ExperienceTimeline from "@/components/experience-timeline"
 import BlogPostCard from "@/components/blog-post-card"
 import ContactSection from "@/components/contact-section"
+import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern"
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-zinc-800">
+      <AnimatedGridPattern
+        numSquares={30}
+        maxOpacity={0.1}
+        duration={3}
+        repeatDelay={1}
+      />
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]" />
         <div className="absolute h-full w-full bg-gradient-to-b from-black/30 via-black/60 to-black" />
         <div className="container relative z-10 mx-auto px-4 py-32 md:py-40">
