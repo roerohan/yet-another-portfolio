@@ -17,17 +17,17 @@
     @apply bg-background text-foreground;
   }
 }
-#about a {
+#main-content a {
   text-decoration: none !important;
   color: var(--links);
   position: relative;
 }
 
-#about a:hover {
+#main-content a:hover {
   color: var(--links);
 }
 
-#about a::before {
+#main-content a::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -41,7 +41,7 @@
   transition: transform 0.3s ease-in-out;
 }
 
-#about a:hover::before {
+#main-content a:hover::before {
   transform-origin: left;
   transform: scaleX(1);
 }

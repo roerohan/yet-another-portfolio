@@ -4,28 +4,31 @@ export default function ExperienceTimeline() {
   const experiences = [
     {
       company: "Cloudflare",
-      role: "Software Engineer",
-      period: "Present",
-      description: "Working on Cloudflare Realtimekit, bringing real-time communication capabilities to the edge.",
+      companyUrl: "https://www.linkedin.com/company/cloudflare",
+      role: "Engineer",
+      period: "2025 - Present",
+      description:
+        "I'm part of the Emerging Technology and Incubation team, where I'm driving the Realtime Kit, a set of tools to enable real-time communication on the web. Building a better internet with Cloudflare!",
       technologies: ["WebRTC", "Edge Computing", "TypeScript", "Rust"],
       current: true,
     },
     {
-      company: "Dyte",
+      company: "Dyte (now Cloudflare)",
+      companyUrl: "https://www.linkedin.com/company/dyteio",
       role: "Founding Engineer",
-      period: "2021 - Acquisition",
+      period: "2020 - 2025",
       description:
-        "Helped build Dyte from the ground up as part of YC W'21 batch. Developed core WebRTC infrastructure and APIs that led to Cloudflare acquisition.",
-      technologies: ["WebRTC", "React", "Node.js", "Kubernetes"],
+        "Embarked on an incredible journey from a college project to a 50+ member company that eventually joined Cloudflare. Contributed to all aspects of the technology, most notably architecting and building the core SDK.",
+      technologies: ["WebRTC", "Typescript", "Go", "System Administration", "Kubernetes"],
       current: false,
     },
     {
       company: "Upwork",
+      companyUrl: "https://www.upwork.com/freelancers/~01a03245e7615b2e2a",
       role: "Freelance Developer",
       period: "2019 - Present",
-      description:
-        "Providing specialized development services in WebRTC, real-time applications, and security solutions.",
-      technologies: ["Full-stack", "WebRTC", "Security", "API Development"],
+      description: "Offering full-stack development, content writing, programming tutoring, and penetration testing services to clients worldwide.",
+      technologies: ["Full-stack Development", "Content Writing", "Programming Tutor", "Penetration Testing"],
       current: true,
     },
   ]
@@ -48,7 +51,7 @@ export default function ExperienceTimeline() {
             <div className="flex flex-wrap items-center gap-2">
               <h3 className="text-xl font-bold">{exp.role}</h3>
               <span className="text-zinc-400">@</span>
-              <span className="font-semibold text-cyan-500">{exp.company}</span>
+              <span className="font-semibold text-cyan-500"><a href={exp.companyUrl} rel="noreferrer" target="_blank">{exp.company}</a></span>
               {exp.current && (
                 <Badge variant="outline" className="border-cyan-500/30 bg-cyan-500/10 text-cyan-500">
                   Current

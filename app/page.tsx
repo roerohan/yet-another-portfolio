@@ -57,7 +57,7 @@ export default function Home() {
       </section>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-16 space-y-20">
+      <div className="container mx-auto px-4 py-16 space-y-20" id="main-content">
         {/* About Section */}
         <section id="about" className="scroll-mt-32">
           <div className="flex items-center mb-8">
