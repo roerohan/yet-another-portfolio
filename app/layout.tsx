@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Software Engineer Portfolio | Cloudflare",
   description:
     "Software Engineer at Cloudflare, founding engineer at Dyte (YC W'21), open source contributor, and cybersecurity enthusiast.",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} min-h-screen bg-gradient-to-br from-gray-950 to-gray-900 text-white`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           {children}
         </ThemeProvider>
