@@ -99,8 +99,8 @@ export default function Home() {
                   <h3 className="text-xl font-bold">Cybersecurity</h3>
                 </div>
                 <p className="text-zinc-400">
-                  Passionate about web security, penetration testing, and building secure systems. I regularly
-                  participate in CTF competitions and contribute to security-focused open source projects.
+                  I'm passionate about web security, penetration testing, and building secure systems. I regularly
+                  participate in <a href="https://github.com/roerohan/CTF-Write-ups" rel="noreferrer" target="_blank">CTF competitions</a> and contribute to security-focused open source projects.
                 </p>
               </CardContent>
             </Card>
@@ -111,8 +111,9 @@ export default function Home() {
                   <h3 className="text-xl font-bold">Open Source</h3>
                 </div>
                 <p className="text-zinc-400">
-                  Active contributor to various open source projects, primarily focused on developer tools, WebRTC
-                  technologies, and security libraries. I believe in giving back to the community.
+                  I'm an active contributor to various&nbsp;
+                  <a href="https://github.com/roerohan" rel="noreferrer" target="_blank">open source projects</a>, primarily focused on developer tools,
+                  WebRTC technologies, and security libraries. I believe in giving back to the community.
                 </p>
               </CardContent>
             </Card>
@@ -120,11 +121,13 @@ export default function Home() {
               <CardContent className="p-6">
                 <div className="mb-4 flex items-center space-x-2">
                   <Music className="h-5 w-5 text-cyan-500" />
-                  <h3 className="text-xl font-bold">Music</h3>
+                  <h3 className="text-xl font-bold">Hobbies</h3>
                 </div>
                 <p className="text-zinc-400">
-                  When I'm not coding, you'll find me exploring new music or playing guitar. I've even built a few
-                  music visualization projects combining my technical skills with my passion for audio.
+                  When I'm not coding or pretending to be a security expert, I'm probably trying to find the most
+                  creative ways to injure myself while rock climbing, or yelling at the TV while watching
+                  football. In between those moments of adrenaline, I also enjoy playing guitar and&nbsp;
+                  <a className="text-cyan-500 underline" href="https://spotify.link/OCbg4u8UWDb" target="_blank" rel="noreferrer">exploring new music</a>.
                 </p>
               </CardContent>
             </Card>
@@ -134,17 +137,17 @@ export default function Home() {
                   <Terminal className="h-5 w-5 text-cyan-500" />
                   <h3 className="text-xl font-bold">Tech Stack</h3>
                 </div>
+                <p className="text-zinc-400 mb-4">
+                  I'm a master of duct-taping together a bunch of different technologies until something works.
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {[
                     "TypeScript",
-                    "Rust",
                     "Go",
+                    "Rust",
                     "React",
                     "Node.js",
                     "WebRTC",
-                    "Cloudflare Workers",
-                    "Edge Computing",
-                    "WebAssembly",
                     "Docker",
                     "Kubernetes",
                   ].map((tech) => (
