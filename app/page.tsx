@@ -65,13 +65,14 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tight">About Me</h2>
           </div>
           <div className="grid gap-8 md:grid-cols-6 items-center mb-8">
-          <div>
-            <img src="https://roerohan.com/dp.png" alt="Avatar" className="rounded-full w-56"/>
+          <div className="flex justify-center items-center">
+            <img src="/images/dp.jpg" alt="issa me mario" className="rounded-lg sm:w-56 object-fit"/>
           </div>
           <div className="lg:text-xl text-zinc-400 col-span-5">
-            <p className="mb-8">
+            <p>
               Hi! I'm Rohan.
             </p>
+            <br />
             <p>
               I'm passionate about&nbsp;
               <a href="https://github.com/roerohan" rel="noreferrer" target="_blank">contributing to open source</a>, penning
@@ -85,9 +86,16 @@ export default function Home() {
             <br/>
             <p>
               While my primary role is at&nbsp;
-              <a href="https://dyte.io" rel="noreferrer" target="_blank">Dyte</a>, a
+              <a href="https://cloudflare.com" rel="noreferrer" target="_blank">Cloudflare</a>, a
               YC W'21 startup, I also dabble in freelancing on&nbsp;
               <a href="https://www.upwork.com/freelancers/~01a03245e7615b2e2a" rel="noreferrer" target="_blank">Upwork</a>.
+            </p>
+            <br />
+            <p>
+              Previously, I was a founding engineer at&nbsp;
+              <a href="https://dyte.io" rel="noreferrer" target="_blank">Dyte</a>, a
+              YC W'21 startup. Dyte is now part of Cloudflare, and the product is now called the&nbsp;
+              <a href="https://realtime.cloudflare.com" rel="noreferrer" target="_blank">Realtime Kit</a>.
             </p>
           </div>
           </div>
