@@ -19,8 +19,8 @@ export default function Home() {
       <AnimatedGridPattern
         numSquares={30}
         maxOpacity={0.1}
-        duration={3}
-        repeatDelay={1}
+        duration={1}
+        repeatDelay={0.5}
       />
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]" />
         <div className="absolute h-full w-full bg-gradient-to-b from-black/30 via-black/60 to-background" />
@@ -64,7 +64,14 @@ export default function Home() {
             <Terminal className="h-6 w-6 mr-3 text-cyan-500" />
             <h2 className="text-3xl font-bold tracking-tight">About Me</h2>
           </div>
-          <div className="lg:text-xl text-zinc-400 mb-8 lg:pr-20">
+          <div className="grid gap-8 md:grid-cols-6 items-center mb-8">
+          <div>
+            <img src="https://roerohan.com/dp.png" alt="Avatar" className="rounded-full w-56"/>
+          </div>
+          <div className="lg:text-xl text-zinc-400 col-span-5">
+            <p className="mb-8">
+              Hi! I'm Rohan.
+            </p>
             <p>
               I'm passionate about&nbsp;
               <a href="https://github.com/roerohan" rel="noreferrer" target="_blank">contributing to open source</a>, penning
@@ -82,6 +89,7 @@ export default function Home() {
               YC W'21 startup, I also dabble in freelancing on&nbsp;
               <a href="https://www.upwork.com/freelancers/~01a03245e7615b2e2a" rel="noreferrer" target="_blank">Upwork</a>.
             </p>
+          </div>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
             <Card className="border-zinc-800 bg-zinc-900/50">

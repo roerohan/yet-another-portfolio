@@ -13,17 +13,17 @@
     @apply bg-background text-foreground;
   }
 }
-a {
+#about a {
   text-decoration: none !important;
   color: var(--links);
   position: relative;
 }
 
-a:hover {
+#about a:hover {
   color: var(--links);
 }
 
-a::before {
+#about a::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -37,7 +37,7 @@ a::before {
   transition: transform 0.3s ease-in-out;
 }
 
-a:hover::before {
+#about a:hover::before {
   transform-origin: left;
   transform: scaleX(1);
 }
