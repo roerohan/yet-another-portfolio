@@ -6,18 +6,18 @@ import { Terminal } from "lucide-react"
 export default function TerminalWindow() {
   const [text, setText] = useState("")
   const [cursorVisible, setCursorVisible] = useState(true)
-  const fullText = `> const developer = {
->   name: "Software Engineer",
->   company: "Cloudflare",
->   background: [
->     "Founding Engineer @ Dyte (YC W'21)",
->     "Now Cloudflare Realtimekit"
->   ],
->   skills: ["WebRTC", "Edge Computing", "Security"],
->   passions: ["Open Source", "Cybersecurity", "Music"]
-> };
-> 
-> console.log("Welcome to my portfolio!");`
+  const fullText = `const developer = {
+   name: "Rohan Mukherjee",
+   company: "Cloudflare",
+   background: [
+     "Founding Engineer @ Dyte (YC W'21)",
+     "Engineer @ Cloudflare"
+   ],
+   skills: ["System Engineer", "Fullstack Development", "WebRTC", "Edge Computing"],
+   passions: ["Open Source", "Cybersecurity", "Music"],
+};
+
+console.log("What brings you here?");`
 
   useEffect(() => {
     let i = 0
