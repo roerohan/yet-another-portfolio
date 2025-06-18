@@ -31,23 +31,26 @@ interface BlogPostData {
 
 export default async function LatestBlogPosts() {
   try {
-    const response = await fetch('https://blog.roerohan.com/page-data/index/page-data.json', {
-      next: { revalidate: 3600 } // Cache for 1 hour
-    });
+    const response = await fetch(
+      "https://blog.roerohan.com/page-data/index/page-data.json",
+      {
+        next: { revalidate: 3600 }, // Cache for 1 hour
+      },
+    );
 
     let posts: BlogPost[] = [];
 
     if (response.ok) {
       const data: BlogPostData = await response.json();
-      
+
       // Get the first 3 posts
       const latestPosts = data.result.data.allMarkdownRemark.nodes.slice(0, 3);
-      
-      posts = latestPosts.map(post => ({
+
+      posts = latestPosts.map((post) => ({
         title: post.frontmatter.title,
-        excerpt: post.excerpt || post.frontmatter.description || '',
+        excerpt: post.excerpt || post.frontmatter.description || "",
         date: post.frontmatter.date,
-        category: post.frontmatter.category ?? 'Blog Post',
+        category: post.frontmatter.category ?? "Blog Post",
         slug: `/blog/${post.fields.slug}`,
       }));
     } else {
@@ -55,25 +58,28 @@ export default async function LatestBlogPosts() {
       posts = [
         {
           title: "The setup that keeps me sane as a developer",
-          excerpt: "I have a borderline obsession with good dev setups. The right tools don’t just make me faster, they keep me from slowly losing my mind. This…",
+          excerpt:
+            "I have a borderline obsession with good dev setups. The right tools don’t just make me faster, they keep me from slowly losing my mind. This…",
           date: "April 04, 2025",
           category: "Tech",
-          slug: "/blog/the-setup-that-keeps-me-sane-as-a-developer"
+          slug: "/blog/the-setup-that-keeps-me-sane-as-a-developer",
         },
         {
           title: "How to Protect Yourself Online",
-          excerpt: "Even the most intelligent individuals may find themselves outsmarted under stress, as the pressure of the moment can cloud judgment and…",
+          excerpt:
+            "Even the most intelligent individuals may find themselves outsmarted under stress, as the pressure of the moment can cloud judgment and…",
           date: "March 03, 2024",
           category: "General",
-          slug: "/blog/how-to-protect-yourself-online"
+          slug: "/blog/how-to-protect-yourself-online",
         },
         {
           title: "Type fast, and master your text editor",
-          excerpt: "Whether you're a software developer or a technical writer, your primary job is to edit text. It is surprising that most people whose jobs…",
+          excerpt:
+            "Whether you're a software developer or a technical writer, your primary job is to edit text. It is surprising that most people whose jobs…",
           date: "October 25, 2023",
           category: "Technology",
-          slug: "/blog/type-fast-and-master-your-text-editor"
-        }
+          slug: "/blog/type-fast-and-master-your-text-editor",
+        },
       ];
     }
 
@@ -92,10 +98,12 @@ export default async function LatestBlogPosts() {
       </div>
     );
   } catch (error) {
-    console.error('Error fetching blog posts:', error);
+    console.error("Error fetching blog posts:", error);
     return (
       <div className="text-center py-8">
-        <p className="text-zinc-400">Unable to load blog posts. Please try again later.</p>
+        <p className="text-zinc-400">
+          Unable to load blog posts. Please try again later.
+        </p>
       </div>
     );
   }

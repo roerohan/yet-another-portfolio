@@ -1,73 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        height: 100vh;
+        width: 100vw;
+        color: rgb(35, 35, 36);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: "Space Mono", sans-serif;
+        overflow: hidden;
+      }
 
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="main.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200&display=swap"
-    rel="stylesheet" />
-  <style>
-    body {
-      height: 100vh;
-      width: 100vw;
-      color: rgb(35, 35, 36);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: "Space Mono", sans-serif;
-      overflow: hidden;
-    }
+      .main {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+      }
 
-    .main {
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-    }
+      p {
+        margin: 5px 0;
+        padding: 0;
+        font-size: 18px;
+      }
 
-    p {
-      margin: 5px 0;
-      padding: 0;
-      font-size: 18px;
-    }
+      #countdown {
+        color: var(--main);
+        font-size: 90px;
+        font-weight: 700;
+        margin: 5px;
+        padding: 0;
+      }
 
-    #countdown {
-      color: var(--main);
-      font-size: 90px;
-      font-weight: 700;
-      margin: 5px;
-      padding: 0;
-    }
+      #countdown span {
+        font-size: 30px;
+      }
+    </style>
+  </head>
 
-    #countdown span {
-      font-size: 30px;
-    }
-  </style>
-</head>
+  <body>
+    <div class="main">
+      <p>Rohan Aged</p>
+      <div id="countdown"></div>
+      <p>Years</p>
+    </div>
+  </body>
 
-<body>
-  <div class="main">
-    <p>Rohan Aged</p>
-    <div id="countdown"></div>
-    <p>Years</p>
-  </div>
-</body>
-
-<script>
-  const birthday = new Date("2000-12-01");
-  setInterval(() => {
-    const today = new Date();
-    const diff = (
-      (Date.parse(today) - Date.parse(birthday)) /
-      (60 * 60 * 1000 * 24 * 365)
-    ).toFixed(9);
-    const split = diff.toString().split(".");
-    document.getElementById(
-      "countdown"
-    ).innerHTML = `${split[0]}.<span>${split[1]}</span>`;
-  }, 100);
-</script>
-
+  <script>
+    const birthday = new Date("2000-12-01");
+    setInterval(() => {
+      const today = new Date();
+      const diff = (
+        (Date.parse(today) - Date.parse(birthday)) /
+        (60 * 60 * 1000 * 24 * 365)
+      ).toFixed(9);
+      const split = diff.toString().split(".");
+      document.getElementById("countdown").innerHTML =
+        `${split[0]}.<span>${split[1]}</span>`;
+    }, 100);
+  </script>
 </html>

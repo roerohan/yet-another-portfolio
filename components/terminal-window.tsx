@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Terminal } from "lucide-react"
+import { useEffect, useState } from "react";
+import { Terminal } from "lucide-react";
 
 export default function TerminalWindow() {
-  const [text, setText] = useState("")
-  const [cursorVisible, setCursorVisible] = useState(true)
+  const [text, setText] = useState("");
+  const [cursorVisible, setCursorVisible] = useState(true);
   const fullText = `const developer = {
    name: "Rohan Mukherjee",
    company: "Cloudflare",
@@ -17,27 +17,27 @@ export default function TerminalWindow() {
    passions: ["Open Source", "Cybersecurity", "Music"],
 };
 
-console.log("What brings you here?");`
+console.log("What brings you here?");`;
 
   useEffect(() => {
-    let i = 0
+    let i = 0;
     const typingInterval = setInterval(() => {
-      setText(fullText.slice(0, i))
-      i++
+      setText(fullText.slice(0, i));
+      i++;
       if (i > fullText.length) {
-        clearInterval(typingInterval)
+        clearInterval(typingInterval);
       }
-    }, 50)
+    }, 50);
 
     const cursorInterval = setInterval(() => {
-      setCursorVisible((prev) => !prev)
-    }, 500)
+      setCursorVisible((prev) => !prev);
+    }, 500);
 
     return () => {
-      clearInterval(typingInterval)
-      clearInterval(cursorInterval)
-    }
-  }, [])
+      clearInterval(typingInterval);
+      clearInterval(cursorInterval);
+    };
+  }, []);
 
   return (
     <div className="w-full max-w-md rounded-lg border border-zinc-800 bg-zinc-900/90 font-mono text-sm shadow-lg">
@@ -55,9 +55,11 @@ console.log("What brings you here?");`
       <div className="p-4">
         <pre className="whitespace-pre-wrap text-cyan-400">
           {text}
-          {cursorVisible && <span className="animate-blink text-cyan-500">▋</span>}
+          {cursorVisible && (
+            <span className="animate-blink text-cyan-500">▋</span>
+          )}
         </pre>
       </div>
     </div>
-  )
+  );
 }
