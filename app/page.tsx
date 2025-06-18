@@ -59,9 +59,9 @@ export default function Home() {
       </section>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-16 space-y-20" id="main-content">
+      <div className="container mx-auto px-4 py-16 space-y-20">
         {/* About Section */}
-        <section id="about" className="scroll-mt-32">
+        <section id="about" className="scroll-mt-32 beautify-links">
           <div className="flex items-center mb-8">
             <Terminal className="h-6 w-6 mr-3 text-cyan-500" />
             <h2 className="text-3xl font-bold tracking-tight">About Me</h2>
@@ -174,7 +174,7 @@ export default function Home() {
         <hr className="border-zinc-800 my-12" />
 
         {/* Experience Section */}
-        <section id="experience" className="scroll-mt-32">
+        <section id="experience" className="scroll-mt-32 beautify-links">
           <div className="flex items-center mb-8">
             <Briefcase className="h-6 w-6 mr-3 text-cyan-500" />
             <h2 className="text-3xl font-bold tracking-tight">Work Experience</h2>
@@ -185,7 +185,7 @@ export default function Home() {
         <hr className="border-zinc-800 my-12" />
 
         {/* Projects Section */}
-        <section id="projects" className="scroll-mt-32">
+        <section id="projects" className="scroll-mt-32 beautify-links">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center">
               <Code2 className="h-6 w-6 mr-3 text-cyan-500" />
@@ -204,7 +204,7 @@ export default function Home() {
         <hr className="border-zinc-800 my-12" />
 
         {/* Blog Section */}
-        <section id="blog" className="scroll-mt-32">
+        <section id="blog" className="scroll-mt-32 beautify-links">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center">
               <Shield className="h-6 w-6 mr-3 text-cyan-500" />

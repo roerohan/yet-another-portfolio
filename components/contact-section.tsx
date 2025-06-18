@@ -53,30 +53,28 @@ export default function ContactSection() {
               me@roerohan.com
             </a>
           </div>
-
-          <div className="flex space-x-4">
-            <Link
-              href="https://github.com/roerohan"
-              className="rounded-full border border-zinc-800 p-2 text-zinc-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:text-cyan-500"
-            >
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
-            </Link>
-            <Link
-              href="https://linkedin.com/in/roerohan"
-              className="rounded-full border border-zinc-800 p-2 text-zinc-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:text-cyan-500"
-            >
-              <Linkedin className="h-5 w-5" />
-              <span className="sr-only">LinkedIn</span>
-            </Link>
-            <Link
-              href="https://twitter.com/roerohan"
-              className="rounded-full border border-zinc-800 p-2 text-zinc-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:text-cyan-500"
-            >
-              <Twitter className="h-5 w-5" />
-              <span className="sr-only">Twitter</span>
-            </Link>
-          </div>
+          <ul className="icons flex space-x-4">
+            <li>
+              <a href="https://x.com/roerohan" target="_blank" title="X"><i className="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/roerohan" target="_blank" title="LinkedIn"><i
+                  className="fab fa-linkedin"></i></a>
+            </li>
+            <li>
+              <a href="https://github.com/roerohan" target="_blank" title="GitHub"><i className="fab fa-github"></i></a>
+            </li>
+            <li>
+              <a href="https://stackoverflow.com/users/11500806/" target="_blank" title="Stackoverflow"><i
+                  className="fab fa-stack-overflow"></i></a>
+            </li>
+            <li>
+              <a href="https://medium.com/@roerohan" target="_blank" title="Medium"><i className="fab fa-medium"></i></a>
+            </li>
+            <li>
+              <a href="mailto://roerohan@gmail.com" target="_blank" title="Mail"><i className="fab fa-google"></i></a>
+            </li>
+          </ul>
         </div>
       </div>
 

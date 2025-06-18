@@ -17,17 +17,18 @@
     @apply bg-background text-foreground;
   }
 }
-#main-content a {
+
+.beautify-links a {
   text-decoration: none !important;
   color: var(--links);
   position: relative;
 }
 
-#main-content a:hover {
+.beautify-links a:hover {
   color: var(--links);
 }
 
-#main-content a::before {
+.beautify-links a::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -41,7 +42,44 @@
   transition: transform 0.3s ease-in-out;
 }
 
-#main-content a:hover::before {
+.beautify-links a:hover::before {
   transform-origin: left;
   transform: scaleX(1);
+}
+
+.icons a:hover::before {
+  transform: scaleX(0);
+}
+
+i {
+  opacity: 0.6;
+  font-size: x-large;
+}
+
+i:hover {
+  opacity: 1;
+}
+
+.fa-twitter:hover {
+  color: #00b6f1;
+}
+
+.fa-github:hover {
+  color: #040204;
+}
+
+.fa-linkedin:hover {
+  color: #04669a;
+}
+
+.fa-stack-overflow:hover {
+  color: #f48024;
+}
+
+.fa-medium:hover {
+  color: #292929;
+}
+
+.fa-google:hover {
+  color: #eb493b;
 }
