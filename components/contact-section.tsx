@@ -107,7 +107,7 @@ export default function ContactSection() {
                 onChange={handleChange}
                 placeholder="Your name"
                 required
-                className="border-zinc-800 bg-zinc-950 focus-visible:ring-cyan-500"
+                className="border-zinc-800 bg-zinc-950 focus-visible:ring-cyan-500 placeholder-zinc-400"
               />
             </div>
             <div className="space-y-2">

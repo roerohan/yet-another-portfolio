@@ -47,32 +47,32 @@ export default async function LatestBlogPosts() {
         title: post.frontmatter.title,
         excerpt: post.excerpt || post.frontmatter.description || '',
         date: post.frontmatter.date,
-        category: post.frontmatter.category || 'General',
-        slug: post.fields.slug
+        category: post.frontmatter.category ?? 'Blog Post',
+        slug: `/blog/${post.fields.slug}`,
       }));
     } else {
       // Fallback to default posts if the API call fails
       posts = [
         {
-          title: "Building Secure WebRTC Applications",
-          excerpt: "Best practices for securing your WebRTC applications against common vulnerabilities",
-          date: "May 15, 2023",
-          category: "Security",
-          slug: "#"
+          title: "The setup that keeps me sane as a developer",
+          excerpt: "I have a borderline obsession with good dev setups. The right tools don’t just make me faster, they keep me from slowly losing my mind. This…",
+          date: "April 04, 2025",
+          category: "Tech",
+          slug: "/blog/the-setup-that-keeps-me-sane-as-a-developer"
         },
         {
-          title: "From Startup to Acquisition: The Dyte Journey",
-          excerpt: "Lessons learned from founding a YC startup and joining Cloudflare",
-          date: "March 22, 2023",
-          category: "Startup",
-          slug: "#"
+          title: "How to Protect Yourself Online",
+          excerpt: "Even the most intelligent individuals may find themselves outsmarted under stress, as the pressure of the moment can cloud judgment and…",
+          date: "March 03, 2024",
+          category: "General",
+          slug: "/blog/how-to-protect-yourself-online"
         },
         {
-          title: "Edge Computing: The Future of Web Performance",
-          excerpt: "How Cloudflare Workers are changing the landscape of web application architecture",
-          date: "January 10, 2023",
+          title: "Type fast, and master your text editor",
+          excerpt: "Whether you're a software developer or a technical writer, your primary job is to edit text. It is surprising that most people whose jobs…",
+          date: "October 25, 2023",
           category: "Technology",
-          slug: "#"
+          slug: "/blog/type-fast-and-master-your-text-editor"
         }
       ];
     }
