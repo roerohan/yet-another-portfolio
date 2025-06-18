@@ -4,6 +4,7 @@
 
 :root {
   --background: 20, 14%, 4%;
+  --radius: 0.5rem;
 }
 
 @layer base {
@@ -11,5 +12,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-

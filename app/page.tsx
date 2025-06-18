@@ -58,6 +58,81 @@ export default function Home() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-16 space-y-20">
+        {/* About Section */}
+        <section id="about" className="scroll-mt-32">
+          <div className="flex items-center mb-8">
+            <Terminal className="h-6 w-6 mr-3 text-cyan-500" />
+            <h2 className="text-3xl font-bold tracking-tight">About Me</h2>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2">
+            <Card className="border-zinc-800 bg-zinc-900/50">
+              <CardContent className="p-6">
+                <div className="mb-4 flex items-center space-x-2">
+                  <Shield className="h-5 w-5 text-cyan-500" />
+                  <h3 className="text-xl font-bold">Cybersecurity</h3>
+                </div>
+                <p className="text-zinc-400">
+                  Passionate about web security, penetration testing, and building secure systems. I regularly
+                  participate in CTF competitions and contribute to security-focused open source projects.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="border-zinc-800 bg-zinc-900/50">
+              <CardContent className="p-6">
+                <div className="mb-4 flex items-center space-x-2">
+                  <Github className="h-5 w-5 text-cyan-500" />
+                  <h3 className="text-xl font-bold">Open Source</h3>
+                </div>
+                <p className="text-zinc-400">
+                  Active contributor to various open source projects, primarily focused on developer tools, WebRTC
+                  technologies, and security libraries. I believe in giving back to the community.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="border-zinc-800 bg-zinc-900/50">
+              <CardContent className="p-6">
+                <div className="mb-4 flex items-center space-x-2">
+                  <Music className="h-5 w-5 text-cyan-500" />
+                  <h3 className="text-xl font-bold">Music</h3>
+                </div>
+                <p className="text-zinc-400">
+                  When I'm not coding, you'll find me exploring new music or playing guitar. I've even built a few
+                  music visualization projects combining my technical skills with my passion for audio.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="border-zinc-800 bg-zinc-900/50">
+              <CardContent className="p-6">
+                <div className="mb-4 flex items-center space-x-2">
+                  <Terminal className="h-5 w-5 text-cyan-500" />
+                  <h3 className="text-xl font-bold">Tech Stack</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "TypeScript",
+                    "Rust",
+                    "Go",
+                    "React",
+                    "Node.js",
+                    "WebRTC",
+                    "Cloudflare Workers",
+                    "Edge Computing",
+                    "WebAssembly",
+                    "Docker",
+                    "Kubernetes",
+                  ].map((tech) => (
+                    <Badge key={tech} variant="secondary" className="bg-zinc-800">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <hr className="border-zinc-800 my-12" />
+
         {/* Experience Section */}
         <section id="experience" className="scroll-mt-32">
           <div className="flex items-center mb-8">
@@ -137,81 +212,6 @@ export default function Home() {
               date="January 10, 2023"
               category="Technology"
             />
-          </div>
-        </section>
-
-        <hr className="border-zinc-800 my-12" />
-
-        {/* About Section */}
-        <section id="about" className="scroll-mt-32">
-          <div className="flex items-center mb-8">
-            <Terminal className="h-6 w-6 mr-3 text-cyan-500" />
-            <h2 className="text-3xl font-bold tracking-tight">About Me</h2>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            <Card className="border-zinc-800 bg-zinc-900/50">
-              <CardContent className="p-6">
-                <div className="mb-4 flex items-center space-x-2">
-                  <Shield className="h-5 w-5 text-cyan-500" />
-                  <h3 className="text-xl font-bold">Cybersecurity</h3>
-                </div>
-                <p className="text-zinc-400">
-                  Passionate about web security, penetration testing, and building secure systems. I regularly
-                  participate in CTF competitions and contribute to security-focused open source projects.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-zinc-800 bg-zinc-900/50">
-              <CardContent className="p-6">
-                <div className="mb-4 flex items-center space-x-2">
-                  <Github className="h-5 w-5 text-cyan-500" />
-                  <h3 className="text-xl font-bold">Open Source</h3>
-                </div>
-                <p className="text-zinc-400">
-                  Active contributor to various open source projects, primarily focused on developer tools, WebRTC
-                  technologies, and security libraries. I believe in giving back to the community.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-zinc-800 bg-zinc-900/50">
-              <CardContent className="p-6">
-                <div className="mb-4 flex items-center space-x-2">
-                  <Music className="h-5 w-5 text-cyan-500" />
-                  <h3 className="text-xl font-bold">Music</h3>
-                </div>
-                <p className="text-zinc-400">
-                  When I'm not coding, you'll find me exploring new music or playing guitar. I've even built a few
-                  music visualization projects combining my technical skills with my passion for audio.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-zinc-800 bg-zinc-900/50">
-              <CardContent className="p-6">
-                <div className="mb-4 flex items-center space-x-2">
-                  <Terminal className="h-5 w-5 text-cyan-500" />
-                  <h3 className="text-xl font-bold">Tech Stack</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "TypeScript",
-                    "Rust",
-                    "Go",
-                    "React",
-                    "Node.js",
-                    "WebRTC",
-                    "Cloudflare Workers",
-                    "Edge Computing",
-                    "WebAssembly",
-                    "Docker",
-                    "Kubernetes",
-                  ].map((tech) => (
-                    <Badge key={tech} variant="secondary" className="bg-zinc-800">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </section>
 
