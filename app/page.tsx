@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
 import { Terminal, Github, ExternalLink, Code2, Shield, Music, Briefcase } from "lucide-react"
+import GitHubProjects from "@/components/github-projects"
 import TerminalWindow from "@/components/terminal-window"
 import ProjectCard from "@/components/project-card"
 import ExperienceTimeline from "@/components/experience-timeline"
@@ -196,26 +197,7 @@ export default function Home() {
               View all on GitHub <ExternalLink className="ml-1 h-4 w-4" />
             </Link>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <ProjectCard
-              title="Cloudflare Workers Library"
-              description="A collection of utilities and middleware for Cloudflare Workers"
-              tags={["TypeScript", "Cloudflare", "Edge Computing"]}
-              githubUrl="https://github.com/roerohan/cloudflare-workers-library"
-            />
-            <ProjectCard
-              title="WebRTC Security Scanner"
-              description="Security auditing tool for WebRTC applications"
-              tags={["Rust", "WebRTC", "Security"]}
-              githubUrl="https://github.com/roerohan/webrtc-security-scanner"
-            />
-            <ProjectCard
-              title="Realtime Data Visualization"
-              description="Dashboard for visualizing realtime data streams"
-              tags={["React", "D3.js", "WebSockets"]}
-              githubUrl="https://github.com/roerohan/realtime-data-viz"
-            />
-          </div>
+          <GitHubProjects />
         </section>
 
         <hr className="border-zinc-800 my-12" />
