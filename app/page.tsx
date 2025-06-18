@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 
 import { Terminal, Github, ExternalLink, Code2, Shield, Music, Briefcase } from "lucide-react"
 import GitHubProjects from "@/components/github-projects"
+import LatestBlogPosts from "@/components/latest-blog-posts"
 import TerminalWindow from "@/components/terminal-window"
 import ProjectCard from "@/components/project-card"
 import ExperienceTimeline from "@/components/experience-timeline"
@@ -213,26 +214,7 @@ export default function Home() {
               View all posts <ExternalLink className="ml-1 h-4 w-4" />
             </Link>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <BlogPostCard
-              title="Building Secure WebRTC Applications"
-              excerpt="Best practices for securing your WebRTC applications against common vulnerabilities"
-              date="May 15, 2023"
-              category="Security"
-            />
-            <BlogPostCard
-              title="From Startup to Acquisition: The Dyte Journey"
-              excerpt="Lessons learned from founding a YC startup and joining Cloudflare"
-              date="March 22, 2023"
-              category="Startup"
-            />
-            <BlogPostCard
-              title="Edge Computing: The Future of Web Performance"
-              excerpt="How Cloudflare Workers are changing the landscape of web application architecture"
-              date="January 10, 2023"
-              category="Technology"
-            />
-          </div>
+          <LatestBlogPosts />
         </section>
 
         <hr className="border-zinc-800 my-12" />
