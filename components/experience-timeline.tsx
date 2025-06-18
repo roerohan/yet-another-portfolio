@@ -39,18 +39,18 @@ export default function ExperienceTimeline() {
 
           {/* Timeline dot */}
           <div
-            className={`absolute left-0 top-1 h-6 w-6 rounded-full border-2 ${exp.current ? "border-emerald-500 bg-emerald-500/20" : "border-zinc-700 bg-zinc-800"} flex items-center justify-center`}
+            className={`absolute left-0 top-1 h-6 w-6 rounded-full border-2 ${exp.current ? "border-cyan-500 bg-cyan-500/20" : "border-zinc-700 bg-zinc-800"} flex items-center justify-center`}
           >
-            <div className={`h-2 w-2 rounded-full ${exp.current ? "bg-emerald-500" : "bg-zinc-600"}`} />
+            <div className={`h-2 w-2 rounded-full ${exp.current ? "bg-cyan-500" : "bg-zinc-600"}`} />
           </div>
 
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <h3 className="text-xl font-bold">{exp.role}</h3>
               <span className="text-zinc-400">@</span>
-              <span className="font-semibold text-emerald-500">{exp.company}</span>
+              <span className="font-semibold text-cyan-500">{exp.company}</span>
               {exp.current && (
-                <Badge variant="outline" className="border-emerald-500/30 bg-emerald-500/10 text-emerald-500">
+                <Badge variant="outline" className="border-cyan-500/30 bg-cyan-500/10 text-cyan-500">
                   Current
                 </Badge>
               )}

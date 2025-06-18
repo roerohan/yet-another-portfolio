@@ -25,13 +25,13 @@ export default function ProjectCard({ title, description, tags, githubUrl, liveU
           ))}
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between border-t border-zinc-800 bg-black/20 p-4">
-        <Link href={githubUrl} className="flex items-center text-sm text-zinc-400 hover:text-emerald-500">
+      <CardFooter className="flex justify-between border-t border-zinc-800 bg-background/20 p-4">
+        <Link href={githubUrl} className="flex items-center text-sm text-zinc-400 hover:text-cyan-500">
           <Github className="mr-1 h-4 w-4" />
           View Source
         </Link>
         {liveUrl && (
-          <Link href={liveUrl} className="flex items-center text-sm text-zinc-400 hover:text-emerald-500">
+          <Link href={liveUrl} className="flex items-center text-sm text-zinc-400 hover:text-cyan-500">
             <ExternalLink className="mr-1 h-4 w-4" />
             Live Demo
           </Link>

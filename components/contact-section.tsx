@@ -48,8 +48,8 @@ export default function ContactSection() {
 
         <div className="mt-6 space-y-4">
           <div className="flex items-center space-x-3">
-            <Mail className="h-5 w-5 text-emerald-500" />
-            <a href="mailto:me@roerohan.com" className="text-zinc-300 hover:text-emerald-500">
+            <Mail className="h-5 w-5 text-cyan-500" />
+            <a href="mailto:me@roerohan.com" className="text-zinc-300 hover:text-cyan-500">
               me@roerohan.com
             </a>
           </div>
@@ -57,21 +57,21 @@ export default function ContactSection() {
           <div className="flex space-x-4">
             <Link
               href="https://github.com/roerohan"
-              className="rounded-full border border-zinc-800 p-2 text-zinc-400 hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-500"
+              className="rounded-full border border-zinc-800 p-2 text-zinc-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:text-cyan-500"
             >
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </Link>
             <Link
               href="https://linkedin.com/in/roerohan"
-              className="rounded-full border border-zinc-800 p-2 text-zinc-400 hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-500"
+              className="rounded-full border border-zinc-800 p-2 text-zinc-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:text-cyan-500"
             >
               <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
             <Link
               href="https://twitter.com/roerohan"
-              className="rounded-full border border-zinc-800 p-2 text-zinc-400 hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-500"
+              className="rounded-full border border-zinc-800 p-2 text-zinc-400 hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:text-cyan-500"
             >
               <Twitter className="h-5 w-5" />
               <span className="sr-only">Twitter</span>
@@ -83,8 +83,8 @@ export default function ContactSection() {
       <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6">
         {isSubmitted ? (
           <div className="flex h-full flex-col items-center justify-center space-y-4 text-center">
-            <div className="rounded-full bg-emerald-500/20 p-3">
-              <svg className="h-6 w-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="rounded-full bg-cyan-500/20 p-3">
+              <svg className="h-6 w-6 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -107,7 +107,7 @@ export default function ContactSection() {
                 onChange={handleChange}
                 placeholder="Your name"
                 required
-                className="border-zinc-800 bg-zinc-950 focus-visible:ring-emerald-500"
+                className="border-zinc-800 bg-zinc-950 focus-visible:ring-cyan-500"
               />
             </div>
             <div className="space-y-2">
@@ -122,7 +122,7 @@ export default function ContactSection() {
                 onChange={handleChange}
                 placeholder="your.email@example.com"
                 required
-                className="border-zinc-800 bg-zinc-950 focus-visible:ring-emerald-500"
+                className="border-zinc-800 bg-zinc-950 focus-visible:ring-cyan-500"
               />
             </div>
             <div className="space-y-2">
@@ -136,7 +136,7 @@ export default function ContactSection() {
                 onChange={handleChange}
                 placeholder="Your message..."
                 required
-                className="min-h-[120px] border-zinc-800 bg-zinc-950 focus-visible:ring-emerald-500"
+                className="min-h-[120px] border-zinc-800 bg-zinc-950 focus-visible:ring-cyan-500"
               />
             </div>
             <Button type="submit" className="w-full" disabled={isSubmitting}>

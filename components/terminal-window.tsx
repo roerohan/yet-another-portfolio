@@ -43,7 +43,7 @@ export default function TerminalWindow() {
     <div className="w-full max-w-md rounded-lg border border-zinc-800 bg-zinc-900/90 font-mono text-sm shadow-lg">
       <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-2">
         <div className="flex items-center space-x-2">
-          <Terminal className="h-4 w-4 text-emerald-500" />
+          <Terminal className="h-4 w-4 text-cyan-500" />
           <span className="text-xs text-zinc-400">portfolio.js</span>
         </div>
         <div className="flex space-x-2">
@@ -53,9 +53,9 @@ export default function TerminalWindow() {
         </div>
       </div>
       <div className="p-4">
-        <pre className="whitespace-pre-wrap text-emerald-400">
+        <pre className="whitespace-pre-wrap text-cyan-400">
           {text}
-          {cursorVisible && <span className="animate-blink text-emerald-500">▋</span>}
+          {cursorVisible && <span className="animate-blink text-cyan-500">▋</span>}
         </pre>
       </div>
     </div>
