@@ -29,7 +29,7 @@ export default function RootLayout({
         <link
           rel="icon"
           type="image/png"
-          href="https://roerohan.github.io/blog/favicon-32x32.png"
+          href="https://blog.roerohan.com/favicon-32x32.png"
           sizes="32x32"
         />
         <script
