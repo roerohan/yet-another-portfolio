@@ -67,6 +67,8 @@ export default function Home() {
           <ExperienceTimeline />
         </section>
 
+        <hr className="border-zinc-800 my-12" />
+
         {/* Projects Section */}
         <section id="projects" className="scroll-mt-32">
           <div className="flex items-center justify-between mb-8">
@@ -103,6 +105,8 @@ export default function Home() {
           </div>
         </section>
 
+        <hr className="border-zinc-800 my-12" />
+
         {/* Blog Section */}
         <section id="blog" className="scroll-mt-32">
           <div className="flex items-center justify-between mb-8">
@@ -135,6 +139,8 @@ export default function Home() {
             />
           </div>
         </section>
+
+        <hr className="border-zinc-800 my-12" />
 
         {/* About Section */}
         <section id="about" className="scroll-mt-32">
@@ -208,6 +214,8 @@ export default function Home() {
             </Card>
           </div>
         </section>
+
+        <hr className="border-zinc-800 my-12" />
 
         {/* Contact Section */}
         <ContactSection />
