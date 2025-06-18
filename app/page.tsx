@@ -35,12 +35,12 @@ export default function Home() {
                 </Badge>
               </div>
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                Software Engineer
-                <span className="block text-cyan-500">at Cloudflare</span>
+                Yet Another
+                <span className="block text-cyan-500">Portfolio Website</span>
               </h1>
               <p className="max-w-[600px] text-zinc-400 md:text-xl">
-                Founding engineer at Dyte (YC W'21) — now Cloudflare Realtimekit. Open source contributor, cybersecurity
-                enthusiast, and music lover.
+                You've reached the internet's 134013489908th attempt at a portfolio website.
+                Welcome! I'm a software engineer at Cloudflare, and an ex-founding engineer at Dyte (YC W'21).
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild>

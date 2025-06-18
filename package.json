@@ -1,5 +1,6 @@
 {
-  "name": "portfolio",
+  "name": "yap",
+  "description": "yet-another-portfolio",
   "version": "0.1.0",
   "private": true,
   "author": "roerohan",

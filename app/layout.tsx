@@ -7,10 +7,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Software Engineer Portfolio | Cloudflare",
+  title: "Rohan Mukherjee | Portfolio",
   description:
-    "Software Engineer at Cloudflare, founding engineer at Dyte (YC W'21), open source contributor, and cybersecurity enthusiast.",
-  generator: 'v0.dev'
+    "Software Engineer at Cloudflare, ex-founding engineer at Dyte (YC W'21), open source contributor, and cybersecurity enthusiast.",
 }
 
 export default function RootLayout({
