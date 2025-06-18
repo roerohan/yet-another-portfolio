@@ -64,6 +64,25 @@ export default function Home() {
             <Terminal className="h-6 w-6 mr-3 text-cyan-500" />
             <h2 className="text-3xl font-bold tracking-tight">About Me</h2>
           </div>
+          <div className="lg:text-xl text-zinc-400 mb-8 lg:pr-20">
+            <p>
+              I'm passionate about&nbsp;
+              <a href="https://github.com/roerohan" rel="noreferrer" target="_blank">contributing to open source</a>, penning
+              the&nbsp;
+              <a href="https://blog.roerohan.com" rel="noreferrer" target="_blank">occasional blog</a>, diving into the
+              world of&nbsp;
+              <a href="https://github.com/roerohan/CTF-Write-ups" rel="noreferrer" target="_blank">cyber-security</a>, and
+              grooving to the&nbsp;
+              <a href="https://spotify.link/OCbg4u8UWDb" rel="noreferrer" target="_blank">beats of music</a>.
+            </p>
+            <br/>
+            <p>
+              While my primary role is at&nbsp;
+              <a href="https://dyte.io" rel="noreferrer" target="_blank">Dyte</a>, a
+              YC W'21 startup, I also dabble in freelancing on&nbsp;
+              <a href="https://www.upwork.com/freelancers/~01a03245e7615b2e2a" rel="noreferrer" target="_blank">Upwork</a>.
+            </p>
+          </div>
           <div className="grid gap-8 md:grid-cols-2">
             <Card className="border-zinc-800 bg-zinc-900/50">
               <CardContent className="p-6">
