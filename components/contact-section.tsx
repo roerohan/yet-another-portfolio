@@ -41,9 +41,9 @@ export default function ContactSection() {
   };
 
   return (
-    <div className="grid gap-8 md:grid-cols-2">
+    <div className="grid gap-8 md:grid-cols-2" id="contact">
       <div>
-        <h2 className="text-3xl font-bold tracking-tight">Get in Touch</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Get in touch</h2>
         <p className="mt-2 text-zinc-400">
           I'm always open to discussing new projects, opportunities, or
           collaborations.
