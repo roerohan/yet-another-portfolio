@@ -33,14 +33,18 @@ export default function RootLayout({
           href="https://blog.roerohan.com/favicon-32x32.png"
           sizes="32x32"
         />
-        <Script id="gtm-script" strategy="afterInteractive" dangerouslySetInnerHTML={{
-          __html: `
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'GTM-NSNFW3NL');
-          `
-        }} />
+          `,
+          }}
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=GTM-NSNFW3NL"
           strategy="afterInteractive"
