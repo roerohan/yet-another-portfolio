@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -32,24 +33,15 @@ export default function RootLayout({
           href="https://blog.roerohan.com/favicon-32x32.png"
           sizes="32x32"
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({"gtm.start": new Date().getTime(), event: "gtm.js"});
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != "dataLayer" ? "&l=" + l : "";
-      j.async = true;
-      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, "script", "dataLayer", "GTM-NSNFW3NL");
-  </script>
-    `,
-          }}
-        />
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-NSNFW3NL');
+          `}
+        </Script>
       </head>
       <body
         className={`${inter.className} min-h-screen bg-gradient-to-br from-gray-950 to-gray-900 text-white`}
@@ -75,3 +67,4 @@ export default function RootLayout({
     </html>
   );
 }
+
