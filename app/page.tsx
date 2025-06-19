@@ -134,7 +134,7 @@ export default function Home() {
                 >
                   Cloudflare
                 </a>
-                , a YC W'21 startup, I also dabble in freelancing on&nbsp;
+                , I also dabble in freelancing on&nbsp;
                 <a
                   href="https://www.upwork.com/freelancers/~01a03245e7615b2e2a"
                   rel="noreferrer"
