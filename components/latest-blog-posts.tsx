@@ -77,7 +77,7 @@ export default async function LatestBlogPosts() {
           excerpt:
             "Whether you're a software developer or a technical writer, your primary job is to edit text. It is surprising that most people whose jobs…",
           date: "October 25, 2023",
-          category: "Technology",
+          category: "Tech",
           slug: "/blog/type-fast-and-master-your-text-editor",
         },
       ];
