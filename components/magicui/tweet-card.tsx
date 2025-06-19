@@ -6,6 +6,7 @@ import {
   type TwitterComponents,
 } from "react-tweet";
 import { getTweet, type Tweet } from "react-tweet/api";
+import { twt } from "../../app/data/twt";
 
 import { cn } from "@/lib/utils";
 
@@ -263,7 +264,7 @@ export const TweetCard = async ({
 }: TweetProps & {
   className?: string;
 }) => {
-  const tweet = id
+  let tweet = id
     ? await getTweet(id).catch((err) => {
         if (onError) {
           onError(err);
@@ -273,14 +274,22 @@ export const TweetCard = async ({
       })
     : undefined;
 
-  if (!tweet) {
-    const NotFound = components?.TweetNotFound || TweetNotFound;
-    return <NotFound {...props} />;
+  if (tweet) {
+    try {
+      const parsedTweet = twt as unknown as Tweet;
+      tweet = parsedTweet;
+    } catch (err) {
+      console.error("Failed to parse tweet:", err);
+      const NotFound = components?.TweetNotFound || TweetNotFound;
+      return <NotFound {...props} />;
+    }
   }
 
-  return (
+  return tweet ? (
     <Suspense fallback={fallback}>
       <MagicTweet tweet={tweet} {...props} />
     </Suspense>
+  ) : (
+    <></>
   );
 };

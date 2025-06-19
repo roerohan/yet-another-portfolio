@@ -20,7 +20,7 @@ import ExperienceTimeline from "@/components/experience-timeline";
 import BlogPostCard from "@/components/blog-post-card";
 import ContactSection from "@/components/contact-section";
 import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern";
-import { TweetCard } from "@/components/magicui/tweet-card";
+import { ClientTweetCard } from "@/components/magicui/client-tweet-card";
 
 export default function Home() {
   return (
@@ -278,7 +278,10 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             <ExperienceTimeline />
             <div className="flex justify-center items-center h-[70%]">
-              <TweetCard id="1930998190993719801" className="shadow-2xl" />
+              <ClientTweetCard
+                id="1930998190993719801"
+                className="shadow-2xl"
+              />
             </div>
           </div>
         </section>
