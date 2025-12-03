@@ -39,12 +39,14 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-2 md:gap-12">
             <div className="flex flex-col justify-center space-y-4">
               <div className="inline-flex items-center space-x-2">
-                <Badge
-                  variant="outline"
-                  className="border-cyan-500/50 bg-cyan-500/10 text-cyan-500"
-                >
-                  Available for freelance
-                </Badge>
+                <Link href="/freelance">
+                  <Badge
+                    variant="outline"
+                    className="border-cyan-500/50 bg-cyan-500/10 text-cyan-500 hover:bg-cyan-500/20 hover:border-cyan-500 transition-all cursor-pointer"
+                  >
+                    Available for freelance
+                  </Badge>
+                </Link>
               </div>
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
                 Yet Another
@@ -52,11 +54,14 @@ export default function Home() {
               </h1>
               <p className="max-w-[600px] text-zinc-400 md:text-xl">
                 You've reached the internet's 134013489908th attempt at a
-                portfolio website. Welcome! I'm a software engineer at
-                Cloudflare, and an ex-founding engineer at Dyte (YC W'21).
+                portfolio website. Welcome! I'm a silicon farmer at Cloudflare,
+                and an ex-founding engineer at Dyte (YC W'21).
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild>
+                  <Link href="/freelance">Hire me</Link>
+                </Button>
+                <Button variant="outline" asChild>
                   <Link href="#contact">Get in touch</Link>
                 </Button>
                 <Button variant="outline" asChild>

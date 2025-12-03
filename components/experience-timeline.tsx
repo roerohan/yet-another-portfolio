@@ -5,7 +5,7 @@ export default function ExperienceTimeline() {
     {
       company: "Cloudflare",
       companyUrl: "https://www.linkedin.com/company/cloudflare",
-      role: "Engineer",
+      role: "Silicon Farmer",
       period: "2025 - Present",
       description:
         "I'm part of the Emerging Technology and Incubation team, where I'm driving the Realtime Kit, a set of tools to enable real-time communication on the web. Building a better internet with Cloudflare!",

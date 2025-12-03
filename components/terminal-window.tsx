@@ -11,9 +11,9 @@ export default function TerminalWindow() {
    company: "Cloudflare",
    background: [
      "Founding Engineer @ Dyte (YC W'21)",
-     "Engineer @ Cloudflare"
+      "Silicon Farmer @ Cloudflare"
    ],
-   skills: ["System Engineer", "Fullstack Development", "WebRTC", "Edge Computing"],
+    skills: ["Silicon Farming", "Fullstack Development", "WebRTC", "Edge Computing"],
    passions: ["Open Source", "Cybersecurity", "Music"],
 };
 
