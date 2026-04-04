@@ -115,7 +115,7 @@ if (!blogPosts.length) {
       <div class="card">
         <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Security</h3>
         <p style="font-size: 0.9375rem; color: var(--muted); line-height: 1.6;">
-          A background in <a href="https://github.com/roerohan/CTF-Write-ups">CTFs and penetration testing</a> that still shapes how I think about systems. Security isn't my day job anymore, but it's always in the back of my mind.
+          My background in <a href="https://github.com/roerohan/CTF-Write-ups">CTFs and penetration testing</a> still shapes how I think about systems. Security isn't my day job anymore, but it's always in the back of my mind.
         </p>
       </div>
       <div class="card">
@@ -141,41 +141,42 @@ if (!blogPosts.length) {
   <!-- Experience -->
   <section id="experience" class="section">
     <h2 class="section-label">Work Experience</h2>
-    <div>
-      <div class="timeline-item-link">
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <h3 class="timeline-title"><a href="https://www.linkedin.com/company/cloudflare" target="_blank" rel="noopener noreferrer">Engineer <span class="muted" style="font-weight: 400;">— Cloudflare</span></a></h3>
-            <span class="timeline-period">2025 - Present</span>
-          </div>
-          <p class="timeline-desc">I'm part of Cloudflare's Emerging Technology and Incubation team — basically a startup that gets to break things at internet scale. We take moonshots and build what the internet looks like next. I've shipped <a href="https://realtime.cloudflare.com" target="_blank" rel="noopener noreferrer">Realtime Kit</a> for real-time communication on the edge, contributed to <a href="https://developers.cloudflare.com/ai-gateway/" target="_blank" rel="noopener noreferrer">AI Gateway</a> for managing AI inference at scale, and whatever else they let me loose on.</p>
-          <div class="timeline-tags">
-            {['TypeScript', 'Go', 'Edge Computing', 'WebRTC'].map(t => <span class="tag">{t}</span>)}
-          </div>
+    <div class="timeline">
+      <div class="timeline-entry" id="cf-entry" data-href="https://www.linkedin.com/company/cloudflare">
+        <div class="timeline-header">
+          <h3 class="timeline-title">Engineer <span class="timeline-company">— Cloudflare</span></h3>
+          <span class="timeline-period">2025 - Present</span>
+        </div>
+        <p class="timeline-desc">I'm part of Cloudflare's Emerging Technology and Incubation team — basically a startup that gets to break things at internet scale. We take moonshots and build what the internet looks like next. I've shipped <a href="https://realtime.cloudflare.com" target="_blank" rel="noopener noreferrer">Realtime Kit</a> for real-time communication on the edge, contributed to <a href="https://developers.cloudflare.com/ai-gateway/" target="_blank" rel="noopener noreferrer">AI Gateway</a> for managing AI inference at scale, and whatever else they let me loose on.</p>
+        <div class="timeline-tags">
+          {['TypeScript', 'Go', 'Edge Computing', 'WebRTC'].map(t => <span class="tag">{t}</span>)}
         </div>
       </div>
-      <a href="https://www.linkedin.com/company/dyteio" target="_blank" rel="noopener noreferrer" class="timeline-item-link">
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <h3 class="timeline-title">Founding Engineer <span class="muted" style="font-weight: 400;">— Dyte (now Cloudflare)</span></h3>
-            <span class="timeline-period">2020 - 2025</span>
-          </div>
-          <p class="timeline-desc">Embarked on an incredible journey from a college project to a 50+ member company that eventually joined Cloudflare. Contributed to all aspects of the technology, most notably architecting and building the core SDK.</p>
-          <div class="timeline-tags">
-            {['WebRTC', 'TypeScript', 'Go', 'System Administration', 'Kubernetes'].map(t => <span class="tag">{t}</span>)}
-          </div>
+      <script>
+        document.getElementById('cf-entry')?.addEventListener('click', (e) => {
+          // Don't navigate if they clicked an actual link inside
+          if ((e.target as HTMLElement).closest('a')) return;
+          window.open('https://www.linkedin.com/company/cloudflare', '_blank');
+        });
+      </script>
+      <a href="https://www.linkedin.com/company/dyteio" target="_blank" rel="noopener noreferrer" class="timeline-entry">
+        <div class="timeline-header">
+          <h3 class="timeline-title">Founding Engineer <span class="timeline-company">— Dyte (now Cloudflare)</span></h3>
+          <span class="timeline-period">2020 - 2025</span>
+        </div>
+        <p class="timeline-desc">Embarked on an incredible journey from a college project to a 50+ member company that eventually joined Cloudflare. Contributed to all aspects of the technology, most notably architecting and building the core SDK.</p>
+        <div class="timeline-tags">
+          {['WebRTC', 'TypeScript', 'Go', 'System Administration', 'Kubernetes'].map(t => <span class="tag">{t}</span>)}
         </div>
       </a>
-      <a href="/freelance" class="timeline-item-link">
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <h3 class="timeline-title">Freelance Developer</h3>
-            <span class="timeline-period">2019 - Present</span>
-          </div>
-          <p class="timeline-desc">Offering full-stack development, content writing, programming tutoring, and penetration testing services to clients worldwide.</p>
-          <div class="timeline-tags">
-            {['Full-stack', 'Content Writing', 'Tutoring', 'Penetration Testing'].map(t => <span class="tag">{t}</span>)}
-          </div>
+      <a href="/freelance" class="timeline-entry">
+        <div class="timeline-header">
+          <h3 class="timeline-title">Freelance Developer</h3>
+          <span class="timeline-period">2019 - Present</span>
+        </div>
+        <p class="timeline-desc">Offering full-stack development, content writing, programming tutoring, and penetration testing services to clients worldwide.</p>
+        <div class="timeline-tags">
+          {['Full-stack', 'Content Writing', 'Tutoring', 'Penetration Testing'].map(t => <span class="tag">{t}</span>)}
         </div>
       </a>
     </div>
