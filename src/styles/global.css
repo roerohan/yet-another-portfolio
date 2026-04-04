@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/*
+  Tailwind v4 theme configuration — maps CSS custom properties to Tailwind utilities.
+  These extend the default Tailwind theme so you can use e.g. bg-bg, text-ink, font-serif, etc.
+*/
+@theme {
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --color-bg: #FAF8F5;
+  --color-bg-secondary: #F0EDE8;
+  --color-ink: #1a1a1a;
+  --color-ink-hover: #000000;
+  --color-muted: #6b6b6b;
+  --color-muted-hover: #3d3d3d;
+  --color-border: #e0ddd8;
+  --color-accent: #1a1a1a;
+  --color-accent-hover: #000000;
+  --color-card-bg: #ffffff;
+  --color-card-border: #e0ddd8;
+  --color-tag-bg: #f0ede8;
+  --color-tag-text: #6b6b6b;
+  --color-success: #2d6a4f;
+
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Dark theme overrides via data-theme attribute */
+[data-theme="dark"] {
+  --color-bg: #111110;
+  --color-bg-secondary: #1a1918;
+  --color-ink: #ede9e3;
+  --color-ink-hover: #ffffff;
+  --color-muted: #8a8680;
+  --color-muted-hover: #c5c1bb;
+  --color-border: #2e2c28;
+  --color-accent: #ede9e3;
+  --color-accent-hover: #ffffff;
+  --color-card-bg: #1a1918;
+  --color-card-border: #2e2c28;
+  --color-tag-bg: #222120;
+  --color-tag-text: #8a8680;
+  --color-success: #52b788;
+}
+
+/*
+  Base element styles — wrapped in @layer base so Tailwind utility classes
+  can override them when applied to elements.
+*/
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  a {
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--color-ink-hover);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/*
+  Component styles — wrapped in @layer components so Tailwind utility classes
+  can still override them, but they sit above base styles.
+*/
+@layer components {
+  /* Prose link styling — used for inline links within text blocks */
+  .prose a {
+    color: var(--color-ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--color-border);
+    text-underline-offset: 2px;
+  }
+
+  .prose a:hover {
+    color: var(--color-ink-hover);
+    text-decoration-color: var(--color-ink-hover);
+  }
+
+  .prose p + p {
+    margin-top: 0.5rem;
+  }
+
+  /* Card link styling */
+  .card-prose a {
+    color: var(--color-ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--color-border);
+    text-underline-offset: 2px;
+  }
+
+  .card-prose a:hover {
+    color: var(--color-ink-hover);
+    text-decoration-color: var(--color-ink-hover);
+  }
+
+  /* Timeline description links */
+  .timeline-desc a {
+    color: var(--color-ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--color-border);
+    text-underline-offset: 2px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+
+  .timeline-desc a:hover {
+    color: var(--color-ink-hover);
+    text-decoration-color: var(--color-ink-hover);
+  }
+
+  /* Form focus styles */
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-ink);
+  }
+}
+
+/*
+  Interactive hover overrides and theme-toggled visibility rules.
+  These MUST live outside any @layer so they beat Tailwind utility classes
+  (e.g. text-ink on .timeline-title must yield to the :hover override).
+*/
+
+/* Timeline entry hover — highlight title and company on parent hover */
+.timeline-entry:hover .timeline-title {
+  color: var(--color-ink-hover);
+}
+
+/* When hovering a link inside the description, stop highlighting the title */
+.timeline-entry:has(.timeline-desc a:hover) .timeline-title {
+  color: var(--color-ink);
+}
+
+.timeline-entry:hover .timeline-company,
+.timeline-entry:hover .timeline-company a {
+  color: var(--color-ink-hover);
+}
+
+/* Blog list hover — highlight title on parent hover */
+.blog-list-item a:hover .blog-list-title {
+  color: var(--color-ink-hover);
+}
+
+/* Theme toggle icon visibility — must override any Tailwind display utilities */
+:root .icon-moon { display: inline-block; }
+:root .icon-sun { display: none; }
+[data-theme="dark"] .icon-moon { display: none; }
+[data-theme="dark"] .icon-sun { display: inline-block; }

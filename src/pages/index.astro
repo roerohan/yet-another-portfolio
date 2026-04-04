@@ -1,0 +1,372 @@
+---
+export const prerender = false;
+import Layout from '../layouts/Layout.astro';
+
+// Fetch pinned repos
+let projects: any[] = [];
+try {
+  const pinnedRes = await fetch('https://pinned.berrysauce.dev/get/roerohan');
+  if (pinnedRes.ok) {
+    projects = await pinnedRes.json();
+  }
+} catch {}
+
+if (!projects.length) {
+  try {
+    const ghRes = await fetch('https://api.github.com/users/roerohan/repos?sort=updated&per_page=6');
+    if (ghRes.ok) {
+      const repos = await ghRes.json();
+      projects = repos.map((r: any) => ({
+        name: r.name,
+        description: r.description,
+        language: r.language,
+        topics: r.topics?.slice(0, 3) || [],
+        html_url: r.html_url,
+        homepage: r.homepage,
+      }));
+    }
+  } catch {}
+}
+
+// Fetch blog posts
+let blogPosts: any[] = [];
+try {
+  const blogRes = await fetch('https://blog.roerohan.com/page-data/index/page-data.json');
+  if (blogRes.ok) {
+    const blogData = await blogRes.json();
+    const nodes = blogData?.result?.data?.allMarkdownRemark?.nodes || [];
+    blogPosts = nodes.slice(0, 5).map((node: any) => ({
+      title: node.frontmatter?.title,
+      date: node.frontmatter?.date,
+      description: node.frontmatter?.description || '',
+      excerpt: node.excerpt,
+      slug: node.fields?.slug,
+    }));
+  }
+} catch {}
+
+if (!blogPosts.length) {
+  blogPosts = [
+    {
+      title: 'The setup that keeps me sane as a developer',
+      date: 'April 04, 2025',
+      description: 'My carefully optimized (and slightly over-engineered) development environment.',
+      excerpt: "I have a borderline obsession with good dev setups. The right tools don't just make me faster, they keep me from slowly losing my mind. This...",
+      slug: '/the-setup-that-keeps-me-sane-as-a-developer/',
+    },
+    {
+      title: 'How to Protect Yourself Online',
+      date: 'March 03, 2024',
+      description: "A narrative about how my friend fell for one of the most elaborate scams I've seen recently.",
+      excerpt: 'Even the most intelligent individuals may find themselves outsmarted under stress, as the pressure of the moment can cloud judgment and...',
+      slug: '/how-to-protect-yourself-online/',
+    },
+    {
+      title: 'Type fast, and master your text editor',
+      date: 'October 25, 2023',
+      description: 'Working online often requires writing and editing text. Learn to type fast, and master a text editor of your choice.',
+      excerpt: "Whether you're a software developer or a technical writer, your primary job is to edit text. It is surprising that most people whose jobs...",
+      slug: '/type-fast-and-master-your-text-editor/',
+    },
+  ];
+}
+---
+
+<Layout title="Rohan Mukherjee | Portfolio" description="Software Engineer at Cloudflare, ex-founding engineer at Dyte (YC W'21), open source contributor, and cybersecurity enthusiast.">
+
+  <!-- Hero -->
+  <section class="pt-16 pb-20 border-b border-border">
+    <a href="/freelance" class="inline-flex items-center gap-1.5 text-[0.8125rem] px-3 py-1 border border-ink rounded-full text-ink font-sans w-fit font-medium mb-6">
+      <span class="w-1.5 h-1.5 rounded-full bg-success inline-block animate-pulse-dot"></span>
+      Available for Freelance Work
+    </a>
+    <h1 class="text-[clamp(2rem,5vw,3rem)] tracking-tight mb-4">
+      I Build Things<br/>
+      <em class="italic">The Right Way</em>
+    </h1>
+    <p class="text-lg text-muted max-w-[540px] leading-[1.7]">
+      Software engineer at Cloudflare, ex-founding engineer at Dyte (YC W'21). I care about shipping products that are thoughtful, well-crafted, and built to last.
+    </p>
+    <div class="flex flex-wrap gap-3 mt-7">
+      <a href="/freelance" class="inline-flex items-center gap-2 font-sans text-sm font-medium py-2.5 px-5 rounded-md border border-ink bg-ink text-bg cursor-pointer transition-all duration-200 ease-in-out no-underline hover:bg-ink-hover hover:border-ink-hover hover:text-bg">Work with me</a>
+      <a href="#contact" class="inline-flex items-center gap-2 font-sans text-sm font-medium py-2.5 px-5 rounded-md border border-border bg-transparent text-ink cursor-pointer transition-all duration-200 ease-in-out no-underline hover:border-ink-hover hover:text-ink-hover hover:bg-bg-secondary">Get in touch</a>
+      <a href="#projects" class="inline-flex items-center gap-2 font-sans text-sm font-medium py-2.5 px-5 rounded-md border border-border bg-transparent text-ink cursor-pointer transition-all duration-200 ease-in-out no-underline hover:border-ink-hover hover:text-ink-hover hover:bg-bg-secondary">View projects</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="pt-16 pb-12 border-b border-border">
+    <h2 class="font-sans text-xs uppercase tracking-[0.1em] text-muted mb-10 font-medium">About Me</h2>
+    <div class="flex flex-col prose">
+      <p>Hi! I'm Rohan.</p>
+      <p class="mt-2">
+        I'm passionate about building tools and products with taste. Crafting things that are thoughtful and well-made, not just AI-generated slop. AI has unlocked incredible leverage, and I think the bar for what we ship should be higher, not lower.
+      </p>
+      <p class="mt-2">
+        I work at <a href="https://cloudflare.com">Cloudflare</a>, contribute to <a href="https://github.com/roerohan">open source</a>, and <a href="/freelance">freelance</a> on the side. Previously, I was a founding engineer at <a href="https://dyte.io">Dyte</a> (YC W'21), which is now part of Cloudflare as the <a href="https://realtime.cloudflare.com">Realtime Kit</a>.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+      <div class="bg-card-bg border border-card-border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover card-prose">
+        <h3 class="text-base mb-2">Building</h3>
+        <p class="text-[0.9375rem] text-muted leading-[1.6]">
+          I care about shipping products that are well-crafted — good defaults, clean interfaces, honest engineering. I build <a href="https://github.com/roerohan">open source tools</a>, contribute to developer infrastructure, and <a href="https://blog.roerohan.com">write about the process</a>.
+        </p>
+      </div>
+      <div class="bg-card-bg border border-card-border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover card-prose">
+        <h3 class="text-base mb-2">Security</h3>
+        <p class="text-[0.9375rem] text-muted leading-[1.6]">
+          My background in <a href="https://github.com/roerohan/CTF-Write-ups">CTFs and penetration testing</a> still shapes how I think about systems. Security isn't my day job anymore, but it's always in the back of my mind.
+        </p>
+      </div>
+      <div class="bg-card-bg border border-card-border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover card-prose">
+        <h3 class="text-base mb-2">Off-screen</h3>
+        <p class="text-[0.9375rem] text-muted leading-[1.6]">
+          I'll say yes to pretty much any outdoor activity — mostly climbing and playing football. Indoors, I'm usually playing guitar or <a href="https://spotify.link/OCbg4u8UWDb">finding new music</a>.
+        </p>
+      </div>
+      <div class="bg-card-bg border border-card-border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover card-prose">
+        <h3 class="text-base mb-2">Tech Stack</h3>
+        <p class="text-[0.9375rem] text-muted leading-[1.6] mb-3">
+          Whatever gets the job done well. I'm most at home with:
+        </p>
+        <div class="flex flex-wrap gap-1.5">
+          {['TypeScript', 'Go', 'Cloudflare Workers', 'React', 'Node.js', 'WebRTC', 'Docker', 'Kubernetes'].map(t => (
+            <span class="text-[0.8125rem] px-3 py-1 border border-border rounded-full text-tag-text bg-tag-bg font-sans inline-block">{t}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="pt-16 pb-12 border-b border-border">
+    <h2 class="font-sans text-xs uppercase tracking-[0.1em] text-muted mb-10 font-medium">Work Experience</h2>
+    <div class="flex flex-col gap-10">
+      <div class="timeline-entry block no-underline text-ink cursor-pointer" id="cf-entry" data-href="https://www.linkedin.com/company/cloudflare">
+        <div class="flex flex-col gap-1 mb-2 sm:flex-row sm:items-baseline sm:justify-between">
+          <h3 class="timeline-title text-lg font-medium text-ink transition-colors duration-200 ease-in-out">Engineer <span class="timeline-company font-normal text-muted">— Cloudflare</span></h3>
+          <span class="font-sans text-sm text-muted shrink-0">2025 - Present</span>
+        </div>
+        <p class="timeline-desc text-[0.9375rem] text-muted leading-[1.6]">I'm part of Cloudflare's Emerging Technology and Incubation team — basically a startup that gets to break things at internet scale. We take moonshots and build what the internet looks like next. I've shipped <a href="https://realtime.cloudflare.com" target="_blank" rel="noopener noreferrer">Realtime Kit</a> for real-time communication on the edge, contributed to <a href="https://developers.cloudflare.com/ai-gateway/" target="_blank" rel="noopener noreferrer">AI Gateway</a> for managing AI inference at scale, and whatever else they let me loose on.</p>
+        <div class="flex flex-wrap gap-1.5 mt-3">
+          {['TypeScript', 'Go', 'Edge Computing', 'WebRTC'].map(t => <span class="text-[0.8125rem] px-3 py-1 border border-border rounded-full text-tag-text bg-tag-bg font-sans inline-block">{t}</span>)}
+        </div>
+      </div>
+      <script>
+        document.getElementById('cf-entry')?.addEventListener('click', (e) => {
+          // Don't navigate if they clicked an actual link inside
+          if ((e.target as HTMLElement).closest('a')) return;
+          window.open('https://www.linkedin.com/company/cloudflare', '_blank');
+        });
+      </script>
+      <a href="https://www.linkedin.com/company/dyteio" target="_blank" rel="noopener noreferrer" class="timeline-entry block no-underline text-ink cursor-pointer">
+        <div class="flex flex-col gap-1 mb-2 sm:flex-row sm:items-baseline sm:justify-between">
+          <h3 class="timeline-title text-lg font-medium text-ink transition-colors duration-200 ease-in-out">Founding Engineer <span class="timeline-company font-normal text-muted">— Dyte (now Cloudflare)</span></h3>
+          <span class="font-sans text-sm text-muted shrink-0">2020 - 2025</span>
+        </div>
+        <p class="timeline-desc text-[0.9375rem] text-muted leading-[1.6]">Embarked on an incredible journey from a college project to a 50+ member company that eventually joined Cloudflare. Contributed to all aspects of the technology, most notably architecting and building the core SDK.</p>
+        <div class="flex flex-wrap gap-1.5 mt-3">
+          {['WebRTC', 'TypeScript', 'Go', 'System Administration', 'Kubernetes'].map(t => <span class="text-[0.8125rem] px-3 py-1 border border-border rounded-full text-tag-text bg-tag-bg font-sans inline-block">{t}</span>)}
+        </div>
+      </a>
+      <a href="/freelance" class="timeline-entry block no-underline text-ink cursor-pointer">
+        <div class="flex flex-col gap-1 mb-2 sm:flex-row sm:items-baseline sm:justify-between">
+          <h3 class="timeline-title text-lg font-medium text-ink transition-colors duration-200 ease-in-out">Freelance Developer</h3>
+          <span class="font-sans text-sm text-muted shrink-0">2019 - Present</span>
+        </div>
+        <p class="timeline-desc text-[0.9375rem] text-muted leading-[1.6]">Offering technical consulting, full-stack development, content writing, and penetration testing services to clients worldwide.</p>
+        <div class="flex flex-wrap gap-1.5 mt-3">
+          {['Technical Consulting', 'Full-stack', 'Content Writing', 'Penetration Testing'].map(t => <span class="text-[0.8125rem] px-3 py-1 border border-border rounded-full text-tag-text bg-tag-bg font-sans inline-block">{t}</span>)}
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="pt-16 pb-12 border-b border-border">
+    <h2 class="font-sans text-xs uppercase tracking-[0.1em] text-muted mb-10 font-medium">Projects</h2>
+
+    <!-- Things I'm Building -->
+    <h3 class="font-serif text-xl mb-5">Shipping</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+      <a href="https://pullsmith.roerohan.com" target="_blank" rel="noopener noreferrer" class="bg-card-bg border border-card-border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover no-underline text-inherit block">
+        <h4 class="text-base mb-1.5">Pullsmith</h4>
+        <p class="text-sm text-muted leading-[1.5]">
+          Ship code from your phone. Chat with any AI model, make quick edits, and open pull requests — from any device, no dev setup needed.
+        </p>
+        <div class="flex flex-wrap gap-1.5 mt-3">
+          {['Cloudflare Workers', 'AI', 'Mobile-first'].map(t => <span class="text-xs px-2 py-0.5 border border-border rounded-full text-tag-text bg-tag-bg font-sans inline-block">{t}</span>)}
+        </div>
+      </a>
+      <a href="https://sidekick.roerohan.com" target="_blank" rel="noopener noreferrer" class="bg-card-bg border border-card-border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover no-underline text-inherit block">
+        <h4 class="text-base mb-1.5">Sidekick</h4>
+        <p class="text-sm text-muted leading-[1.5]">
+          LLM chat in your menu bar. BYOK, switch between GPT, Claude, Gemini and more. Share your screen for visual context.
+        </p>
+        <div class="flex flex-wrap gap-1.5 mt-3">
+          {['macOS', 'AI', 'Desktop App'].map(t => <span class="text-xs px-2 py-0.5 border border-border rounded-full text-tag-text bg-tag-bg font-sans inline-block">{t}</span>)}
+        </div>
+      </a>
+    </div>
+
+    <!-- Open Source -->
+    <div class="flex items-baseline justify-between mb-5">
+      <h3 class="font-serif text-xl">Open Source</h3>
+      <a href="https://github.com/roerohan" target="_blank" rel="noopener noreferrer" class="text-sm">View all on GitHub &rarr;</a>
+    </div>
+    {projects.length > 0 ? (
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {projects.map((repo: any) => (
+          <a href={repo.html_url || `https://github.com/roerohan/${repo.name}`} target="_blank" rel="noopener noreferrer" class="bg-card-bg border border-card-border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover no-underline text-inherit block h-full overflow-hidden break-words min-w-0">
+            <h4 class="text-base mb-1.5">{repo.name}</h4>
+            <p class="text-sm text-muted leading-[1.5] mb-2">
+              {repo.description || 'No description provided.'}
+            </p>
+            <div class="flex items-center gap-3 text-[0.8125rem] text-muted mt-3">
+              {repo.language && (
+                <span class="flex items-center gap-1">
+                  <span class="w-2 h-2 rounded-full inline-block bg-muted"></span>
+                  {repo.language}
+                </span>
+              )}
+            </div>
+            {(repo.topics?.length > 0) && (
+              <div class="flex flex-wrap gap-1 mt-2">
+                {repo.topics.slice(0, 3).map((topic: string) => (
+                  <span class="text-xs px-2 py-0.5 border border-border rounded-full text-tag-text bg-tag-bg font-sans inline-block">{topic}</span>
+                ))}
+              </div>
+            )}
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="text-muted">Unable to load projects at this time.</p>
+    )}
+  </section>
+
+  <!-- Blog -->
+  <section id="blog" class="pt-16 pb-12 border-b border-border">
+    <div class="flex items-baseline justify-between mb-10">
+      <h2 class="font-sans text-xs uppercase tracking-[0.1em] text-muted font-medium">Writing</h2>
+      <a href="/blog" class="text-sm">View all posts &rarr;</a>
+    </div>
+    <div class="flex flex-col">
+      {blogPosts.map((post: any) => (
+        <article class="blog-list-item py-6 border-b border-border first:pt-0 last:border-b-0 last:pb-0">
+          <a href={`/blog${post.slug}`} class="no-underline text-inherit block">
+            <h3 class="blog-list-title font-serif text-xl font-medium leading-[1.35] tracking-[-0.01em] mb-1 text-ink transition-colors duration-200 ease-in-out">{post.title}</h3>
+            <p class="text-[0.8125rem] text-muted mb-2">{post.date}{post.description && ` — ${post.description}`}</p>
+            <p class="text-[0.9375rem] text-muted leading-[1.6]">{post.excerpt}</p>
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="pt-16 pb-12">
+    <h2 class="font-sans text-xs uppercase tracking-[0.1em] text-muted mb-10 font-medium">Get in touch</h2>
+    <p class="text-muted mb-6">
+      I'm always open to discussing new projects, opportunities, or collaborations.
+    </p>
+    <p class="mb-8">
+      <a href="mailto:me@roerohan.com" class="inline-flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        me@roerohan.com
+      </a>
+    </p>
+
+    <div class="flex gap-4 flex-wrap mb-8">
+      <a href="https://x.com/roerohan" target="_blank" rel="noopener noreferrer" title="X" class="inline-flex items-center justify-center w-9 h-9 border border-border rounded-md text-muted transition-all duration-200 ease-in-out hover:text-ink-hover hover:border-ink-hover">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/roerohan" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="inline-flex items-center justify-center w-9 h-9 border border-border rounded-md text-muted transition-all duration-200 ease-in-out hover:text-ink-hover hover:border-ink-hover">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://github.com/roerohan" target="_blank" rel="noopener noreferrer" title="GitHub" class="inline-flex items-center justify-center w-9 h-9 border border-border rounded-md text-muted transition-all duration-200 ease-in-out hover:text-ink-hover hover:border-ink-hover">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      <a href="https://stackoverflow.com/users/11500806/" target="_blank" rel="noopener noreferrer" title="StackOverflow" class="inline-flex items-center justify-center w-9 h-9 border border-border rounded-md text-muted transition-all duration-200 ease-in-out hover:text-ink-hover hover:border-ink-hover">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.72-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.905-1.94-9.702-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.254v2.133h10.66v-2.133H6.154z"/></svg>
+      </a>
+      <a href="https://medium.com/@roerohan" target="_blank" rel="noopener noreferrer" title="Medium" class="inline-flex items-center justify-center w-9 h-9 border border-border rounded-md text-muted transition-all duration-200 ease-in-out hover:text-ink-hover hover:border-ink-hover">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+      </a>
+      <a href="mailto:roerohan@gmail.com" title="Email" class="inline-flex items-center justify-center w-9 h-9 border border-border rounded-md text-muted transition-all duration-200 ease-in-out hover:text-ink-hover hover:border-ink-hover">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      </a>
+    </div>
+
+    <form id="contact-form" class="max-w-[480px]">
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium mb-1.5 text-ink">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required class="form-input w-full py-2.5 px-3 font-sans text-sm bg-bg border border-border rounded-md text-ink transition-[border-color] duration-200 ease-in-out" />
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium mb-1.5 text-ink">Email</label>
+        <input type="email" id="email" name="email" placeholder="your.email@example.com" required class="form-input w-full py-2.5 px-3 font-sans text-sm bg-bg border border-border rounded-md text-ink transition-[border-color] duration-200 ease-in-out" />
+      </div>
+      <div class="mb-4">
+        <label for="message" class="block text-sm font-medium mb-1.5 text-ink">Message</label>
+        <textarea id="message" name="message" placeholder="Your message..." required class="form-input w-full py-2.5 px-3 font-sans text-sm bg-bg border border-border rounded-md text-ink transition-[border-color] duration-200 ease-in-out resize-y min-h-[120px]"></textarea>
+      </div>
+      <button type="submit" class="inline-flex items-center gap-2 font-sans text-sm font-medium py-2.5 px-5 rounded-md border border-ink bg-ink text-bg cursor-pointer transition-all duration-200 ease-in-out no-underline hover:bg-ink-hover hover:border-ink-hover hover:text-bg" id="submit-btn">Send Message</button>
+    </form>
+    <div id="success-msg" class="hidden mt-4">
+      <h3 class="text-lg mb-1.5">Message sent!</h3>
+      <p class="text-muted mb-3">Thanks for reaching out. I'll get back to you soon.</p>
+      <button class="inline-flex items-center gap-2 font-sans text-sm font-medium py-2.5 px-5 rounded-md border border-border bg-transparent text-ink cursor-pointer transition-all duration-200 ease-in-out no-underline hover:border-ink-hover hover:text-ink-hover hover:bg-bg-secondary" id="send-another">Send another message</button>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const successMsg = document.getElementById('success-msg')!;
+    const submitBtn = document.getElementById('submit-btn')!;
+    const sendAnother = document.getElementById('send-another')!;
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.textContent = 'Sending...';
+      submitBtn.setAttribute('disabled', 'true');
+
+      const formData = new FormData(form);
+      const payload = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) {
+          const data = await res.json();
+          throw new Error(data.error || 'Something went wrong');
+        }
+
+        form.style.display = 'none';
+        successMsg.classList.remove('hidden');
+        successMsg.style.display = 'block';
+      } catch (err: any) {
+        alert(err.message || 'Failed to send message. Please try again.');
+      } finally {
+        submitBtn.textContent = 'Send Message';
+        submitBtn.removeAttribute('disabled');
+      }
+    });
+
+    sendAnother?.addEventListener('click', () => {
+      form.reset();
+      form.style.display = 'block';
+      successMsg.classList.add('hidden');
+      successMsg.style.display = 'none';
+    });
+  </script>
+</Layout>

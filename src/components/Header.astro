@@ -1,0 +1,82 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  showBack?: boolean;
+}
+
+const { showBack = false } = Astro.props;
+---
+
+<header class="max-w-[680px] mx-auto px-6 pt-8 pb-6 max-[640px]:relative">
+  <div class="flex items-center justify-between">
+    {showBack ? (
+      <a href="/" class="text-sm text-muted no-underline inline-flex items-center gap-1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Home
+      </a>
+    ) : (
+      <a href="/" class="font-serif text-xl font-semibold tracking-tight text-ink no-underline">
+        Rohan Mukherjee
+      </a>
+    )}
+    <div class="flex items-center gap-4">
+      {!showBack && (
+        <nav class="flex items-center gap-6 max-[640px]:hidden max-[640px]:absolute max-[640px]:top-full max-[640px]:left-0 max-[640px]:right-0 max-[640px]:bg-bg max-[640px]:border-b max-[640px]:border-border max-[640px]:flex-col max-[640px]:px-6 max-[640px]:pt-4 max-[640px]:pb-5 max-[640px]:gap-0 max-[640px]:z-[100]" id="nav-menu">
+          <a href="#projects" class="text-sm text-muted no-underline hover:text-ink-hover max-[640px]:py-2.5 max-[640px]:border-b max-[640px]:border-border max-[640px]:w-full">Projects</a>
+          <a href="/blog" class="text-sm text-muted no-underline hover:text-ink-hover max-[640px]:py-2.5 max-[640px]:border-b max-[640px]:border-border max-[640px]:w-full">Blog</a>
+          <a href="#contact" class="text-sm text-muted no-underline hover:text-ink-hover max-[640px]:py-2.5 max-[640px]:border-b max-[640px]:border-border max-[640px]:w-full">Contact</a>
+          <a href="/freelance" class="text-sm text-muted no-underline hover:text-ink-hover max-[640px]:py-2.5 max-[640px]:w-full">Freelance</a>
+        </nav>
+      )}
+      <ThemeToggle />
+      {!showBack && (
+        <button class="hidden max-[640px]:inline-flex bg-transparent border border-border rounded-md p-1.5 cursor-pointer text-muted items-center justify-center w-9 h-9 transition-all duration-200 ease-in-out hover:text-ink hover:border-ink" id="nav-burger" aria-label="Toggle menu">
+          <svg class="burger-open" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="burger-close hidden" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      )}
+    </div>
+  </div>
+</header>
+
+<script>
+  const burger = document.getElementById('nav-burger');
+  const nav = document.getElementById('nav-menu');
+  burger?.addEventListener('click', () => {
+    const isActive = burger.classList.toggle('active');
+    // Toggle nav visibility
+    if (isActive) {
+      nav?.classList.remove('max-[640px]:hidden');
+      nav?.classList.add('max-[640px]:flex');
+    } else {
+      nav?.classList.add('max-[640px]:hidden');
+      nav?.classList.remove('max-[640px]:flex');
+    }
+    // Toggle burger icons
+    const openIcon = burger.querySelector('.burger-open');
+    const closeIcon = burger.querySelector('.burger-close');
+    if (isActive) {
+      openIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('inline-block');
+    } else {
+      openIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('inline-block');
+    }
+  });
+  // Close nav when a link is clicked
+  nav?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger?.classList.remove('active');
+      nav?.classList.add('max-[640px]:hidden');
+      nav?.classList.remove('max-[640px]:flex');
+      const openIcon = burger?.querySelector('.burger-open');
+      const closeIcon = burger?.querySelector('.burger-close');
+      openIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('inline-block');
+    });
+  });
+</script>
