@@ -22,7 +22,7 @@ const { title, description, showBack = false } = Astro.props;
     <title>{title}</title>
     <script is:inline>
       (function() {
-        const theme = localStorage.getItem('theme') || 'dark';
+        const theme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
