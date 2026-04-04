@@ -29,7 +29,7 @@ const { title, description, showBack = false } = Astro.props;
   </head>
   <body>
     <Header showBack={showBack} />
-    <main class="container">
+    <main class="max-w-[680px] mx-auto px-6">
       <slot />
     </main>
     <Footer />

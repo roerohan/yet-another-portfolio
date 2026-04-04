@@ -31,50 +31,53 @@ const services = [
 <Layout title="Freelance Services | Rohan Mukherjee" description="Hire Rohan Mukherjee for full-stack development, backend engineering, security audits, and technical content. Engineer at Cloudflare, ex-founding engineer at Dyte (YC W'21)." showBack={true}>
 
   <!-- Hero -->
-  <section class="freelance-hero">
-    <span class="badge badge--accent">
-      <span class="pulse-dot"></span>
+  <section class="pt-16 pb-20 border-b border-border">
+    <span class="inline-flex items-center gap-1.5 text-[0.8125rem] px-3 py-1 border border-ink rounded-full text-ink font-sans w-fit font-medium mb-6">
+      <span class="w-1.5 h-1.5 rounded-full bg-success inline-block animate-pulse-dot"></span>
       Available for Freelance Work
     </span>
-    <h1 class="freelance-hero__title">
+    <h1 class="text-[clamp(2rem,5vw,3rem)] tracking-tight mb-5">
       Let's Build Something<br/>
-      <em>Exceptional Together</em>
+      <em class="italic">Exceptional Together</em>
     </h1>
-    <p class="freelance-hero__pitch">
+    <p class="text-[1.0625rem] text-muted max-w-[560px] leading-[1.75] prose">
       I'm an engineer at <a href="https://www.linkedin.com/company/cloudflare" target="_blank" rel="noopener noreferrer">Cloudflare</a>, where I build cutting-edge developer tools used by thousands of engineers. Before that, I was a founding engineer at <a href="https://www.linkedin.com/company/dyteio" target="_blank" rel="noopener noreferrer">Dyte</a> — a YC-backed startup I helped grow from a college project to an acquisition. I bring that same intensity to freelance work.
     </p>
-    <div class="freelance-hero__cta">
-      <a href="/#contact" class="btn btn--primary">Start a Conversation</a>
-      <a href="https://www.upwork.com/freelancers/~01a03245e7615b2e2a" target="_blank" rel="noopener noreferrer" class="btn">Upwork Profile</a>
+    <div class="flex flex-wrap gap-3 mt-7">
+      <a href="/#contact" class="inline-flex items-center gap-2 font-sans text-sm font-medium py-2.5 px-5 rounded-md border border-ink bg-ink text-bg cursor-pointer transition-all duration-200 ease-in-out no-underline hover:bg-ink-hover hover:border-ink-hover hover:text-bg">Start a Conversation</a>
+      <a href="https://www.upwork.com/freelancers/~01a03245e7615b2e2a" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-sans text-sm font-medium py-2.5 px-5 rounded-md border border-border bg-transparent text-ink cursor-pointer transition-all duration-200 ease-in-out no-underline hover:border-ink-hover hover:text-ink-hover hover:bg-bg-secondary">Upwork Profile</a>
     </div>
   </section>
 
   <!-- Background -->
-  <section class="section">
-    <h2 class="section-label">Background</h2>
-    <div class="prose freelance-background">
+  <section class="pt-16 pb-12 border-b border-border">
+    <h2 class="font-sans text-xs uppercase tracking-[0.1em] text-muted mb-10 font-medium">Background</h2>
+    <div class="prose">
       <p>
         At <a href="https://www.linkedin.com/company/cloudflare" target="_blank" rel="noopener noreferrer">Cloudflare</a>, I'm part of the Emerging Technology and Incubation team — essentially a startup within Cloudflare that takes moonshots and builds what the future of the internet looks like. I've contributed heavily to products like the <a href="https://realtime.cloudflare.com" target="_blank" rel="noopener noreferrer">Realtime Kit</a> and <a href="https://developers.cloudflare.com/ai-gateway/" target="_blank" rel="noopener noreferrer">AI Gateway</a>. Before that, I was a founding engineer at <a href="https://www.linkedin.com/company/dyteio" target="_blank" rel="noopener noreferrer">Dyte</a> (YC W'21), where I architected the core SDK that powered real-time communication for hundreds of companies. Dyte was eventually acquired by Cloudflare.
       </p>
-      <p>
+      <p class="mt-3">
         I've built systems at every layer of the stack — from WebRTC media servers to React component libraries, from Kubernetes clusters to edge functions. I've shipped production code in TypeScript, Go, Rust, and Python. I've also broken into enough web applications through <a href="https://github.com/roerohan/CTF-Write-ups" target="_blank" rel="noopener noreferrer">CTFs and security research</a> to know how to build them properly.
       </p>
-      <p>
+      <p class="mt-3">
         I write about the things I learn on my <a href="https://blog.roerohan.com" target="_blank" rel="noopener noreferrer">blog</a>, and I maintain <a href="https://github.com/roerohan" target="_blank" rel="noopener noreferrer">many open source repositories</a> on GitHub.
       </p>
     </div>
   </section>
 
   <!-- Services -->
-  <section id="services" class="section">
-    <h2 class="section-label">What I Can Do For You</h2>
-    <div class="grid-2">
+  <section id="services" class="pt-16 pb-12 border-b border-border">
+    <h2 class="font-sans text-xs uppercase tracking-[0.1em] text-muted mb-10 font-medium">What I Can Do For You</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {services.map((service) => (
-        <div class={`card service-card ${service.highlight ? 'service-card--highlight' : ''}`}>
-          <h3>{service.title}</h3>
-          <p>{service.description}</p>
-          <div class="service-card__tags">
-            {service.tags.map((tag) => <span class="tag">{tag}</span>)}
+        <div class:list={[
+          'bg-card-bg border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover',
+          service.highlight ? 'border-muted' : 'border-card-border'
+        ]}>
+          <h3 class="text-lg mb-2">{service.title}</h3>
+          <p class="text-[0.9375rem] text-muted leading-[1.6]">{service.description}</p>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            {service.tags.map((tag) => <span class="text-[0.8125rem] px-3 py-1 border border-border rounded-full text-tag-text bg-tag-bg font-sans inline-block">{tag}</span>)}
           </div>
         </div>
       ))}
@@ -82,51 +85,51 @@ const services = [
   </section>
 
   <!-- How I Work -->
-  <section id="process" class="section">
-    <h2 class="section-label">How I Work</h2>
-    <div class="freelance-process">
-      <div class="freelance-process__step">
-        <div class="freelance-process__number">01</div>
+  <section id="process" class="pt-16 pb-12 border-b border-border">
+    <h2 class="font-sans text-xs uppercase tracking-[0.1em] text-muted mb-10 font-medium">How I Work</h2>
+    <div class="flex flex-col">
+      <div class="flex gap-5 py-6 border-b border-border first:pt-0">
+        <div class="font-serif text-2xl font-medium text-border shrink-0 leading-[1.3]">01</div>
         <div>
-          <h3>Understand the Problem</h3>
-          <p>I start by listening. What are you building? What constraints matter? I ask the questions most freelancers skip so we're aligned before a single line of code is written.</p>
+          <h3 class="text-[1.0625rem] mb-1.5">Understand the Problem</h3>
+          <p class="text-[0.9375rem] text-muted leading-[1.6]">I start by listening. What are you building? What constraints matter? I ask the questions most freelancers skip so we're aligned before a single line of code is written.</p>
         </div>
       </div>
-      <div class="freelance-process__step">
-        <div class="freelance-process__number">02</div>
+      <div class="flex gap-5 py-6 border-b border-border">
+        <div class="font-serif text-2xl font-medium text-border shrink-0 leading-[1.3]">02</div>
         <div>
-          <h3>Propose a Plan</h3>
-          <p>I break the work into clear milestones with honest timelines. No scope creep surprises. You'll know exactly what you're getting and when.</p>
+          <h3 class="text-[1.0625rem] mb-1.5">Propose a Plan</h3>
+          <p class="text-[0.9375rem] text-muted leading-[1.6]">I break the work into clear milestones with honest timelines. No scope creep surprises. You'll know exactly what you're getting and when.</p>
         </div>
       </div>
-      <div class="freelance-process__step">
-        <div class="freelance-process__number">03</div>
+      <div class="flex gap-5 py-6 border-b border-border">
+        <div class="font-serif text-2xl font-medium text-border shrink-0 leading-[1.3]">03</div>
         <div>
-          <h3>Build & Iterate</h3>
-          <p>I work in short cycles with regular check-ins. You'll see progress early and often — not a big reveal at the deadline that doesn't match what you wanted.</p>
+          <h3 class="text-[1.0625rem] mb-1.5">Build & Iterate</h3>
+          <p class="text-[0.9375rem] text-muted leading-[1.6]">I work in short cycles with regular check-ins. You'll see progress early and often — not a big reveal at the deadline that doesn't match what you wanted.</p>
         </div>
       </div>
-      <div class="freelance-process__step">
-        <div class="freelance-process__number">04</div>
+      <div class="flex gap-5 py-6">
+        <div class="font-serif text-2xl font-medium text-border shrink-0 leading-[1.3]">04</div>
         <div>
-          <h3>Deliver & Document</h3>
-          <p>Clean code, tested edge cases, and documentation that means you're never locked into me. I build things that your team can maintain long after the engagement ends.</p>
+          <h3 class="text-[1.0625rem] mb-1.5">Deliver & Document</h3>
+          <p class="text-[0.9375rem] text-muted leading-[1.6]">Clean code, tested edge cases, and documentation that means you're never locked into me. I build things that your team can maintain long after the engagement ends.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section id="contact" class="section freelance-cta">
-    <h2 class="freelance-cta__title">Have something in mind?</h2>
-    <p class="freelance-cta__desc">
+  <section id="contact" class="pt-16 pb-12 text-center">
+    <h2 class="text-[clamp(1.5rem,4vw,2.25rem)] mb-4">Have something in mind?</h2>
+    <p class="text-muted max-w-[520px] mx-auto mb-7 leading-[1.7]">
       I take on a handful of freelance projects at a time so I can give each one the attention it deserves. If you have a project that needs serious engineering, let's talk.
     </p>
-    <div class="freelance-cta__buttons">
-      <a href="/#contact" class="btn btn--primary">Get in Touch</a>
-      <a href="https://www.upwork.com/freelancers/~01a03245e7615b2e2a" target="_blank" rel="noopener noreferrer" class="btn">Hire on Upwork</a>
+    <div class="flex flex-wrap gap-3 justify-center mb-6">
+      <a href="/#contact" class="inline-flex items-center gap-2 font-sans text-sm font-medium py-2.5 px-5 rounded-md border border-ink bg-ink text-bg cursor-pointer transition-all duration-200 ease-in-out no-underline hover:bg-ink-hover hover:border-ink-hover hover:text-bg">Get in Touch</a>
+      <a href="https://www.upwork.com/freelancers/~01a03245e7615b2e2a" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-sans text-sm font-medium py-2.5 px-5 rounded-md border border-border bg-transparent text-ink cursor-pointer transition-all duration-200 ease-in-out no-underline hover:border-ink-hover hover:text-ink-hover hover:bg-bg-secondary">Hire on Upwork</a>
     </div>
-    <p class="freelance-cta__note">
+    <p class="text-[0.8125rem] text-muted">
       I usually respond within 48 hours
     </p>
   </section>

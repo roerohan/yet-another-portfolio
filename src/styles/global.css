@@ -1,735 +1,182 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
 
-:root {
+/*
+  Tailwind v4 theme configuration — maps CSS custom properties to Tailwind utilities.
+  These extend the default Tailwind theme so you can use e.g. bg-bg, text-ink, font-serif, etc.
+*/
+@theme {
   --font-serif: 'Newsreader', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
 
-  /* Light theme — warm cream/paper, inspired by harsh-portfolio */
-  --bg: #FAF8F5;
-  --bg-secondary: #F0EDE8;
-  --ink: #1a1a1a;
-  --ink-hover: #000000;
-  --muted: #6b6b6b;
-  --muted-hover: #3d3d3d;
-  --border: #e0ddd8;
-  --accent: #1a1a1a;
-  --accent-hover: #000000;
-  --card-bg: #ffffff;
-  --card-border: #e0ddd8;
-  --tag-bg: #f0ede8;
-  --tag-text: #6b6b6b;
-  --success: #2d6a4f;
-}
-
-[data-theme="dark"] {
-  /* Dark theme — inverted warm tones */
-  --bg: #111110;
-  --bg-secondary: #1a1918;
-  --ink: #ede9e3;
-  --ink-hover: #ffffff;
-  --muted: #8a8680;
-  --muted-hover: #c5c1bb;
-  --border: #2e2c28;
-  --accent: #ede9e3;
-  --accent-hover: #ffffff;
-  --card-bg: #1a1918;
-  --card-border: #2e2c28;
-  --tag-bg: #222120;
-  --tag-text: #8a8680;
-  --success: #52b788;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-sans);
-  background-color: var(--bg);
-  color: var(--ink);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-h1, h2, h3, h4 {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  line-height: 1.3;
-}
-
-a {
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: var(--ink-hover);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Utility */
-.container {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.section {
-  padding-top: 4rem;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.section:last-child {
-  border-bottom: none;
-}
-
-.section-label {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  margin-bottom: 2.5rem;
-  font-weight: 500;
-}
-
-.muted {
-  color: var(--muted);
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: 0.8125rem;
-  padding: 0.25rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 9999px;
-  color: var(--muted);
-  font-family: var(--font-sans);
-  width: fit-content;
-}
-
-.badge--accent {
-  border-color: var(--ink);
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.tag {
-  font-size: 0.8125rem;
-  padding: 0.25rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 9999px;
-  color: var(--tag-text);
-  background: var(--tag-bg);
-  font-family: var(--font-sans);
-  display: inline-block;
-}
-
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  transition: border-color 0.2s ease;
-}
-
-.card:hover {
-  border-color: var(--muted-hover);
-}
-
-.card p a {
-  color: var(--ink);
-  font-weight: 500;
-  text-decoration: underline;
-  text-decoration-color: var(--border);
-  text-underline-offset: 2px;
-}
-
-.card p a:hover {
-  color: var(--ink-hover);
-  text-decoration-color: var(--ink-hover);
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 500;
-  padding: 0.625rem 1.25rem;
-  border-radius: 0.375rem;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--ink);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
-
-.btn:hover {
-  border-color: var(--ink-hover);
-  color: var(--ink-hover);
-  background: var(--bg-secondary);
-}
-
-.btn--primary {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
-}
-
-.btn--primary:hover {
-  background: var(--ink-hover);
-  border-color: var(--ink-hover);
-  color: var(--bg);
-}
-
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
-@media (min-width: 640px) {
-  .grid-2 {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
-.grid-3 > * {
-  height: 100%;
-  min-width: 0;
-}
-
-.grid-3 .card {
-  height: 100%;
-  overflow: hidden;
-  word-break: break-word;
-}
-
-@media (min-width: 640px) {
-  .grid-3 {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (min-width: 768px) {
-  .grid-3 {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-/* prose links */
-.prose a {
-  color: var(--ink);
-  font-weight: 500;
-  text-decoration: underline;
-  text-decoration-color: var(--border);
-  text-underline-offset: 2px;
-}
-
-.prose a:hover {
-  color: var(--ink-hover);
-  text-decoration-color: var(--ink-hover);
-}
-
-.prose p + p {
-  margin-top: 0.5rem;
-}
-
-/* Social icons */
-.social-links {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border: 1px solid var(--border);
-  border-radius: 0.375rem;
-  color: var(--muted);
-  transition: all 0.2s ease;
-}
-
-.social-links a:hover {
-  color: var(--ink-hover);
-  border-color: var(--ink-hover);
-}
-
-/* Contact form */
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-bottom: 0.375rem;
-  color: var(--ink);
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.625rem 0.75rem;
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 0.375rem;
-  color: var(--ink);
-  transition: border-color 0.2s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--ink);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-/* Stats grid */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-@media (min-width: 640px) {
-  .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.stat-card {
-  text-align: center;
-  padding: 1.25rem;
-}
-
-.stat-value {
-  font-family: var(--font-serif);
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.stat-label {
-  font-size: 0.8125rem;
-  color: var(--muted);
-  margin-top: 0.25rem;
-}
-
-/* Experience timeline */
-.timeline-entry {
-  display: block;
-  text-decoration: none;
-  color: var(--ink);
-  cursor: pointer;
-}
-
-a.timeline-entry {
-  color: var(--ink);
-}
-
-.timeline-entry:hover .timeline-title {
-  color: var(--ink-hover);
-}
-
-/* When hovering a link inside the description, stop highlighting the title */
-.timeline-entry:has(.timeline-desc a:hover) .timeline-title {
-  color: var(--ink);
-}
-
-/* Links inside timeline descriptions */
-.timeline-desc a {
-  color: var(--ink);
-  font-weight: 500;
-  text-decoration: underline;
-  text-decoration-color: var(--border);
-  text-underline-offset: 2px;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
-}
-
-.timeline-desc a:hover {
-  color: var(--ink-hover);
-  text-decoration-color: var(--ink-hover);
-}
-
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-.timeline-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-bottom: 0.5rem;
-}
-
-@media (min-width: 640px) {
-  .timeline-header {
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
-  }
-}
-
-.timeline-title {
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: var(--ink);
-  transition: color 0.2s ease;
-}
-
-.timeline-company {
-  font-weight: 400;
-  color: var(--muted);
-}
-
-.timeline-company a {
-  color: var(--muted);
-  text-decoration: none;
-}
-
-.timeline-entry:hover .timeline-company,
-.timeline-entry:hover .timeline-company a {
-  color: var(--ink-hover);
-}
-
-.timeline-period {
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  color: var(--muted);
-  flex-shrink: 0;
-}
-
-.timeline-desc {
-  font-size: 0.9375rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.timeline-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.375rem;
-  margin-top: 0.75rem;
-}
-
-/* Theme toggle */
-.theme-toggle {
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 0.375rem;
-  padding: 0.375rem;
-  cursor: pointer;
-  color: var(--muted);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  transition: all 0.2s ease;
-}
-
-.theme-toggle:hover {
-  color: var(--ink-hover);
-  border-color: var(--ink-hover);
-}
-
-.theme-toggle svg {
-  width: 1rem;
-  height: 1rem;
-}
-
-/* Footer */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 3rem 0;
-  font-size: 0.875rem;
-  color: var(--muted);
-}
-
-footer .footer-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-@media (min-width: 640px) {
-  footer .footer-inner {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-/* Project card extras */
-.project-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.8125rem;
-  color: var(--muted);
-  margin-top: 0.75rem;
-}
-
-.project-language {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.project-language .dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-/* Blog list (vertical, editorial style) */
-.blog-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.blog-list-item {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.blog-list-item:first-child {
-  padding-top: 0;
-}
-
-.blog-list-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.blog-list-item a:hover .blog-list-title {
-  color: var(--ink-hover);
-}
-
-.blog-list-title {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.25rem;
-  color: var(--ink);
-  transition: color 0.2s ease;
-}
-
-.blog-list-meta {
-  font-size: 0.8125rem;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
-}
-
-.blog-list-excerpt {
-  font-size: 0.9375rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* Service card */
-.service-card h3 {
-  font-size: 1.125rem;
-  margin-bottom: 0.5rem;
-}
-
-.service-card p {
-  font-size: 0.9375rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.service-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.375rem;
-  margin-top: 0.75rem;
-}
-
-.service-card--highlight {
-  border-color: var(--muted);
-}
-
-/* Freelance page — Hero */
-.freelance-hero {
-  padding-top: 4rem;
-  padding-bottom: 5rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.freelance-hero .badge {
-  margin-bottom: 1.5rem;
-}
-
-.freelance-hero__title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  letter-spacing: -0.02em;
-  margin-bottom: 1.25rem;
-}
-
-.freelance-hero__title em {
-  font-style: italic;
-}
-
-.freelance-hero__pitch {
-  font-size: 1.0625rem;
-  color: var(--muted);
-  max-width: 560px;
-  line-height: 1.75;
-}
-
-.freelance-hero__cta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
-}
-
-.pulse-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--success);
-  display: inline-block;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
+  --color-bg: #FAF8F5;
+  --color-bg-secondary: #F0EDE8;
+  --color-ink: #1a1a1a;
+  --color-ink-hover: #000000;
+  --color-muted: #6b6b6b;
+  --color-muted-hover: #3d3d3d;
+  --color-border: #e0ddd8;
+  --color-accent: #1a1a1a;
+  --color-accent-hover: #000000;
+  --color-card-bg: #ffffff;
+  --color-card-border: #e0ddd8;
+  --color-tag-bg: #f0ede8;
+  --color-tag-text: #6b6b6b;
+  --color-success: #2d6a4f;
+
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
 
-/* Freelance page — Background */
-.freelance-background p + p {
-  margin-top: 0.75rem;
+/* Dark theme overrides via data-theme attribute */
+[data-theme="dark"] {
+  --color-bg: #111110;
+  --color-bg-secondary: #1a1918;
+  --color-ink: #ede9e3;
+  --color-ink-hover: #ffffff;
+  --color-muted: #8a8680;
+  --color-muted-hover: #c5c1bb;
+  --color-border: #2e2c28;
+  --color-accent: #ede9e3;
+  --color-accent-hover: #ffffff;
+  --color-card-bg: #1a1918;
+  --color-card-border: #2e2c28;
+  --color-tag-bg: #222120;
+  --color-tag-text: #8a8680;
+  --color-success: #52b788;
 }
 
-/* Freelance page — Process */
-.freelance-process {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+/*
+  Base element styles — wrapped in @layer base so Tailwind utility classes
+  can override them when applied to elements.
+*/
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  a {
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--color-ink-hover);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
-.freelance-process__step {
-  display: flex;
-  gap: 1.25rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--border);
+/*
+  Component styles — wrapped in @layer components so Tailwind utility classes
+  can still override them, but they sit above base styles.
+*/
+@layer components {
+  /* Prose link styling — used for inline links within text blocks */
+  .prose a {
+    color: var(--color-ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--color-border);
+    text-underline-offset: 2px;
+  }
+
+  .prose a:hover {
+    color: var(--color-ink-hover);
+    text-decoration-color: var(--color-ink-hover);
+  }
+
+  .prose p + p {
+    margin-top: 0.5rem;
+  }
+
+  /* Card link styling */
+  .card-prose a {
+    color: var(--color-ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--color-border);
+    text-underline-offset: 2px;
+  }
+
+  .card-prose a:hover {
+    color: var(--color-ink-hover);
+    text-decoration-color: var(--color-ink-hover);
+  }
+
+  /* Timeline description links */
+  .timeline-desc a {
+    color: var(--color-ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--color-border);
+    text-underline-offset: 2px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+
+  .timeline-desc a:hover {
+    color: var(--color-ink-hover);
+    text-decoration-color: var(--color-ink-hover);
+  }
+
+  /* Form focus styles */
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-ink);
+  }
 }
 
-.freelance-process__step:first-child {
-  padding-top: 0;
+/*
+  Interactive hover overrides and theme-toggled visibility rules.
+  These MUST live outside any @layer so they beat Tailwind utility classes
+  (e.g. text-ink on .timeline-title must yield to the :hover override).
+*/
+
+/* Timeline entry hover — highlight title and company on parent hover */
+.timeline-entry:hover .timeline-title {
+  color: var(--color-ink-hover);
 }
 
-.freelance-process__step:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+/* When hovering a link inside the description, stop highlighting the title */
+.timeline-entry:has(.timeline-desc a:hover) .timeline-title {
+  color: var(--color-ink);
 }
 
-.freelance-process__number {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--border);
-  flex-shrink: 0;
-  line-height: 1.3;
+.timeline-entry:hover .timeline-company,
+.timeline-entry:hover .timeline-company a {
+  color: var(--color-ink-hover);
 }
 
-.freelance-process__step h3 {
-  font-size: 1.0625rem;
-  margin-bottom: 0.375rem;
+/* Blog list hover — highlight title on parent hover */
+.blog-list-item a:hover .blog-list-title {
+  color: var(--color-ink-hover);
 }
 
-.freelance-process__step p {
-  font-size: 0.9375rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* Freelance page — CTA */
-.freelance-cta {
-  border-bottom: none;
-  text-align: center;
-}
-
-.freelance-cta__title {
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
-  margin-bottom: 1rem;
-}
-
-.freelance-cta__desc {
-  color: var(--muted);
-  max-width: 520px;
-  margin: 0 auto 1.75rem;
-  line-height: 1.7;
-}
-
-.freelance-cta__buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-.freelance-cta__note {
-  font-size: 0.8125rem;
-  color: var(--muted);
-}
-
-/* Hidden by theme */
-[data-theme="dark"] .icon-sun { display: none; }
-[data-theme="dark"] .icon-moon { display: inline-block; }
-:root .icon-sun { display: inline-block; }
-:root .icon-moon { display: none; }
-[data-theme="dark"] .icon-sun { display: inline-block; }
-[data-theme="dark"] .icon-moon { display: none; }
-
-/* Correct theme icon logic: show sun in dark (to switch to light), moon in light (to switch to dark) */
+/* Theme toggle icon visibility — must override any Tailwind display utilities */
 :root .icon-moon { display: inline-block; }
 :root .icon-sun { display: none; }
 [data-theme="dark"] .icon-moon { display: none; }
