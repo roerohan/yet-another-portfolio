@@ -1,4 +1,5 @@
 ---
+export const prerender = false;
 import Layout from '../layouts/Layout.astro';
 
 // Fetch pinned repos
@@ -326,18 +327,39 @@ if (!blogPosts.length) {
     const submitBtn = document.getElementById('submit-btn')!;
     const sendAnother = document.getElementById('send-another')!;
 
-    form?.addEventListener('submit', (e) => {
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault();
       submitBtn.textContent = 'Sending...';
       submitBtn.setAttribute('disabled', 'true');
-      // TODO: Wire to real backend (Resend, SendGrid, etc.)
-      setTimeout(() => {
+
+      const formData = new FormData(form);
+      const payload = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) {
+          const data = await res.json();
+          throw new Error(data.error || 'Something went wrong');
+        }
+
         form.style.display = 'none';
         successMsg.classList.remove('hidden');
         successMsg.style.display = 'block';
+      } catch (err: any) {
+        alert(err.message || 'Failed to send message. Please try again.');
+      } finally {
         submitBtn.textContent = 'Send Message';
         submitBtn.removeAttribute('disabled');
-      }, 1000);
+      }
     });
 
     sendAnother?.addEventListener('click', () => {
