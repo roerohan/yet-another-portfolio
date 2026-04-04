@@ -2,6 +2,8 @@
 
 Personal portfolio site built with [Astro](https://astro.build) and deployed on [Cloudflare Workers](https://workers.cloudflare.com).
 
+Hosted on [roerohan.com](https://roerohan.com).
+
 ## Development
 
 ```bash
