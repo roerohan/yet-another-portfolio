@@ -84,7 +84,7 @@ if (!blogPosts.length) {
       <em style="font-style: italic;">Portfolio Website</em>
     </h1>
     <p style="font-size: 1.125rem; color: var(--muted); max-width: 540px; line-height: 1.7;">
-      You've reached the internet's 134013489908th attempt at a portfolio website. Welcome! I'm a software engineer at Cloudflare, and an ex-founding engineer at Dyte (YC W'21).
+      You've reached the internet's 134013489908th attempt at a portfolio website. Hey! I'm a software engineer at Cloudflare, and an ex-founding engineer at Dyte (YC W'21).
     </p>
     <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem;">
       <a href="/freelance" class="btn btn--primary">Work with me</a>
@@ -183,19 +183,41 @@ if (!blogPosts.length) {
 
   <!-- Projects -->
   <section id="projects" class="section">
-    <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2.5rem;">
-      <h2 class="section-label" style="margin-bottom: 0;">Open Source Projects</h2>
+    <h2 class="section-label">Projects</h2>
+
+    <!-- Things I'm Building -->
+    <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 1.25rem;">Shipping</h3>
+    <div class="grid-2" style="margin-bottom: 2.5rem;">
+      <a href="https://pullsmith.roerohan.com" target="_blank" rel="noopener noreferrer" class="card" style="text-decoration: none; color: inherit; display: block;">
+        <h4 style="font-size: 1rem; margin-bottom: 0.375rem;">Pullsmith</h4>
+        <p style="font-size: 0.875rem; color: var(--muted); line-height: 1.5;">
+          Ship code from your phone. Chat with any AI model, make quick edits, and open pull requests — from any device, no dev setup needed.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 0.75rem;">
+          {['Cloudflare Workers', 'AI', 'Mobile-first'].map(t => <span class="tag" style="font-size: 0.75rem; padding: 0.125rem 0.5rem;">{t}</span>)}
+        </div>
+      </a>
+      <a href="https://sidekick.roerohan.com" target="_blank" rel="noopener noreferrer" class="card" style="text-decoration: none; color: inherit; display: block;">
+        <h4 style="font-size: 1rem; margin-bottom: 0.375rem;">Sidekick</h4>
+        <p style="font-size: 0.875rem; color: var(--muted); line-height: 1.5;">
+          LLM chat in your menu bar. BYOK, switch between GPT, Claude, Gemini and more. Share your screen for visual context.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 0.75rem;">
+          {['macOS', 'AI', 'Desktop App'].map(t => <span class="tag" style="font-size: 0.75rem; padding: 0.125rem 0.5rem;">{t}</span>)}
+        </div>
+      </a>
+    </div>
+
+    <!-- Open Source -->
+    <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.25rem;">
+      <h3 style="font-family: var(--font-serif); font-size: 1.25rem;">Open Source</h3>
       <a href="https://github.com/roerohan" target="_blank" rel="noopener noreferrer" style="font-size: 0.875rem;">View all on GitHub &rarr;</a>
     </div>
     {projects.length > 0 ? (
       <div class="grid-3">
         {projects.map((repo: any) => (
-          <div class="card">
-            <h3 style="font-size: 1rem; margin-bottom: 0.375rem;">
-              <a href={repo.html_url || `https://github.com/roerohan/${repo.name}`} target="_blank" rel="noopener noreferrer" style="color: var(--ink);">
-                {repo.name}
-              </a>
-            </h3>
+          <a href={repo.html_url || `https://github.com/roerohan/${repo.name}`} target="_blank" rel="noopener noreferrer" class="card" style="text-decoration: none; color: inherit; display: block;">
+            <h4 style="font-size: 1rem; margin-bottom: 0.375rem;">{repo.name}</h4>
             <p style="font-size: 0.875rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.5rem;">
               {repo.description || 'No description provided.'}
             </p>
@@ -214,7 +236,7 @@ if (!blogPosts.length) {
                 ))}
               </div>
             )}
-          </div>
+          </a>
         ))}
       </div>
     ) : (
