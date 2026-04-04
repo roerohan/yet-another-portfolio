@@ -1,0 +1,250 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Fetch GitHub data
+let ghProfile: any = null;
+let topRepos: any[] = [];
+let totalStars = 0;
+
+try {
+  const [profileRes, reposRes] = await Promise.all([
+    fetch('https://api.github.com/users/roerohan'),
+    fetch('https://api.github.com/users/roerohan/repos?per_page=100'),
+  ]);
+  if (profileRes.ok) ghProfile = await profileRes.json();
+  if (reposRes.ok) {
+    const repos = await reposRes.json();
+    const ownRepos = repos.filter((r: any) => !r.fork);
+    totalStars = ownRepos.reduce((sum: number, r: any) => sum + (r.stargazers_count || 0), 0);
+    topRepos = ownRepos
+      .sort((a: any, b: any) => b.stargazers_count - a.stargazers_count)
+      .slice(0, 3);
+  }
+} catch {}
+
+const accountAge = ghProfile?.created_at
+  ? new Date().getFullYear() - new Date(ghProfile.created_at).getFullYear()
+  : 0;
+
+const services = [
+  {
+    title: 'Full-Stack Development',
+    description: 'End-to-end web application development with modern frameworks. From responsive frontends to scalable backends, I build complete solutions.',
+    tags: ['React', 'Next.js', 'Node.js', 'TypeScript', 'Go', 'Rust'],
+    badge: 'Most Popular',
+  },
+  {
+    title: 'Backend & Infrastructure',
+    description: 'Robust backend systems, RESTful APIs, real-time services, and cloud infrastructure. Specializing in WebRTC, microservices, and edge computing.',
+    tags: ['WebRTC', 'Kubernetes', 'Docker', 'System Design', 'Cloud'],
+    badge: 'Specialized',
+  },
+  {
+    title: 'Security & Penetration Testing',
+    description: 'Web application security audits, penetration testing, and secure code reviews. Helping you find vulnerabilities before attackers do.',
+    tags: ['OWASP Top 10', 'CTF Experience', 'Security Audits'],
+    badge: 'Expert',
+  },
+  {
+    title: 'Technical Content Writing',
+    description: 'Clear, engaging technical documentation, blog posts, and tutorials. I translate complex concepts into digestible content.',
+    tags: ['Documentation', 'Blog Posts', 'API Docs', 'Tutorials'],
+  },
+  {
+    title: 'Programming Tutoring',
+    description: "One-on-one programming mentorship and tutoring. Whether you're learning your first language or diving into advanced concepts.",
+    tags: ['JavaScript', 'Python', 'Go', 'Data Structures', 'Algorithms'],
+  },
+  {
+    title: 'Code Review & Consulting',
+    description: 'Expert code reviews, architecture consulting, and technical guidance for your projects. Get a fresh perspective from an experienced engineer.',
+    tags: ['Architecture Review', 'Best Practices', 'Performance'],
+  },
+];
+
+const whyItems = [
+  { title: 'Real-World Experience', desc: 'Currently building real-time communication tools at Cloudflare. Ex-founding engineer at a YC-backed startup acquired by Cloudflare.' },
+  { title: 'Full-Stack Expertise', desc: "From frontend React to backend Go/Rust, infrastructure, and DevOps. I've built systems serving millions of users." },
+  { title: 'Security-First Mindset', desc: 'Active CTF participant and security enthusiast. I build with security in mind from day one, not as an afterthought.' },
+  { title: 'Clear Communication', desc: "Regular updates, transparent processes, and clear documentation. You'll always know where your project stands." },
+  { title: 'Open Source Contributor', desc: 'Active in the developer community. I give back by contributing to open source and sharing knowledge through blogs.' },
+  { title: 'Fast & Reliable', desc: 'Deadlines matter. I deliver quality work on time, every time. 5+ years of proven reliability on Upwork.' },
+];
+---
+
+<Layout title="Freelance Services | Rohan Mukherjee" description="Hire Rohan Mukherjee for full-stack development, backend engineering, security audits, and technical content. 5+ years of freelancing experience on Upwork." showBack={true}>
+
+  <!-- Hero -->
+  <section style="padding-top: 4rem; padding-bottom: 5rem; border-bottom: 1px solid var(--border);">
+    <span class="badge badge--accent" style="margin-bottom: 1.5rem;">
+      <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--ink); display: inline-block;"></span>
+      Available for Freelance Work
+    </span>
+    <h1 style="font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.02em; margin-bottom: 1rem;">
+      Let's Build Something<br/>
+      <em style="font-style: italic;">Exceptional Together</em>
+    </h1>
+    <p style="font-size: 1.125rem; color: var(--muted); max-width: 540px; line-height: 1.7;">
+      Systems Engineer at Cloudflare. Ex-founding engineer at Dyte, a YC startup. 5+ years of delivering high-quality solutions to clients worldwide on Upwork.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem;">
+      <a href="#contact" class="btn btn--primary">Start a Project</a>
+      <a href="https://www.upwork.com/freelancers/~01a03245e7615b2e2a" target="_blank" rel="noopener noreferrer" class="btn">View Upwork Profile</a>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section">
+    <div class="stats-grid">
+      <div class="stat-card card">
+        <div class="stat-value">5+</div>
+        <div class="stat-label">Years Freelancing</div>
+      </div>
+      <div class="stat-card card">
+        <div class="stat-value">30+</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div class="stat-card card">
+        <div class="stat-value" style="font-size: 1.25rem;">Top Rated</div>
+        <div class="stat-label">Upwork Status</div>
+      </div>
+      <div class="stat-card card">
+        <div class="stat-value">98%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <h2 class="section-label">Services I Offer</h2>
+    <p style="color: var(--muted); margin-bottom: 2rem;">From concept to deployment, I provide comprehensive solutions tailored to your needs.</p>
+    <div class="grid-2">
+      {services.map((service) => (
+        <div class="card service-card">
+          {service.badge && <span class="badge" style="margin-bottom: 0.75rem; font-weight: 500;">{service.badge}</span>}
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 0.75rem;">
+            {service.tags.map((tag) => <span class="tag">{tag}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- GitHub -->
+  <section id="github" class="section">
+    <h2 class="section-label">Open Source Contributions</h2>
+    <p style="color: var(--muted); margin-bottom: 2rem;">I believe in giving back to the community. Here's a glimpse of my open source work.</p>
+
+    {ghProfile ? (
+      <div>
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+          <img src={ghProfile.avatar_url} alt={ghProfile.name} style="width: 64px; height: 64px; border-radius: 50%;" />
+          <div>
+            <h3 style="font-size: 1.125rem; margin-bottom: 0.125rem;">{ghProfile.name}</h3>
+            <p style="font-size: 0.875rem; color: var(--muted);">@{ghProfile.login}</p>
+            {ghProfile.bio && <p style="font-size: 0.875rem; color: var(--muted); margin-top: 0.25rem;">{ghProfile.bio}</p>}
+          </div>
+        </div>
+
+        <div class="stats-grid" style="margin-bottom: 1.5rem;">
+          <div class="stat-card card">
+            <div class="stat-value">{ghProfile.public_repos}</div>
+            <div class="stat-label">Repositories</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-value">{totalStars}+</div>
+            <div class="stat-label">Total Stars</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-value">{ghProfile.followers}</div>
+            <div class="stat-label">Followers</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-value">{accountAge}+</div>
+            <div class="stat-label">Years</div>
+          </div>
+        </div>
+
+        <a href={ghProfile.html_url} target="_blank" rel="noopener noreferrer" class="btn" style="margin-bottom: 2rem; display: inline-flex;">
+          View Profile
+        </a>
+
+        <div style="margin-bottom: 2rem;">
+          <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">Contribution Activity</h3>
+          <img src="https://ghchart.rshah.org/3d3a36/roerohan" alt="GitHub Contribution Graph" style="width: 100%; border-radius: 0.375rem;" />
+        </div>
+
+        {topRepos.length > 0 && (
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">Top Repositories</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+              {topRepos.map((repo: any) => (
+                <div class="card">
+                  <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.375rem;">
+                    <a href={repo.html_url} target="_blank" rel="noopener noreferrer" style="font-weight: 500;">{repo.name}</a>
+                    <span style="font-size: 0.8125rem; color: var(--muted);">
+                      {repo.stargazers_count} stars &middot; {repo.forks_count} forks
+                    </span>
+                  </div>
+                  <p style="font-size: 0.875rem; color: var(--muted);">{repo.description || 'No description provided'}</p>
+                  {repo.language && (
+                    <div class="project-meta">
+                      <span class="project-language">
+                        <span class="dot" style="background: var(--muted);"></span>
+                        {repo.language}
+                      </span>
+                    </div>
+                  )}
+                  {repo.topics?.length > 0 && (
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.5rem;">
+                      {repo.topics.slice(0, 3).map((t: string) => (
+                        <span class="tag" style="font-size: 0.75rem; padding: 0.125rem 0.5rem;">{t}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    ) : (
+      <p style="color: var(--muted);">Unable to load GitHub profile.</p>
+    )}
+  </section>
+
+  <!-- Why Work With Me -->
+  <section id="why" class="section">
+    <h2 class="section-label">Why Work With Me?</h2>
+    <p style="color: var(--muted); margin-bottom: 2rem;">More than just a freelancer. A dedicated partner in your success.</p>
+    <div class="grid-2">
+      {whyItems.map((item) => (
+        <div class="card">
+          <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">{item.title}</h3>
+          <p style="font-size: 0.9375rem; color: var(--muted); line-height: 1.6;">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="section" style="border-bottom: none; text-align: center;">
+    <h2 style="font-size: clamp(1.5rem, 4vw, 2.25rem); margin-bottom: 1rem;">Ready to Start Your Project?</h2>
+    <p style="color: var(--muted); max-width: 540px; margin: 0 auto 1.75rem;">
+      Whether you need a full-stack application, backend infrastructure, security audit, or technical content, I'm here to help bring your vision to life.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 2rem;">
+      <a href="/#contact" class="btn btn--primary">Get in Touch</a>
+      <a href="https://www.upwork.com/freelancers/~01a03245e7615b2e2a" target="_blank" rel="noopener noreferrer" class="btn">Hire me on Upwork</a>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; font-size: 0.875rem; color: var(--muted);">
+      <span>Fast Response Time</span>
+      <span>Flexible Availability</span>
+      <span>Quality Guaranteed</span>
+    </div>
+  </section>
+
+</Layout>
