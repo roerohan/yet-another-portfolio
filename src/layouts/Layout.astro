@@ -7,9 +7,13 @@ interface Props {
   title: string;
   description?: string;
   showBack?: boolean;
+  ogImage?: string;
 }
 
-const { title, description, showBack = false } = Astro.props;
+const SITE_URL = 'https://roerohan.com';
+const { title, description, showBack = false, ogImage = '/images/dp.jpg' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, SITE_URL);
+const ogImageURL = new URL(ogImage, SITE_URL);
 ---
 
 <!doctype html>
@@ -18,8 +22,24 @@ const { title, description, showBack = false } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalURL.href} />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:image" content={ogImageURL.href} />
+    <meta property="og:site_name" content="Rohan Mukherjee" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={ogImageURL.href} />
+
     <script is:inline>
       (function() {
         const theme = localStorage.getItem('theme') || 'light';

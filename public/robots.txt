@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://roerohan.com/sitemap-index.xml

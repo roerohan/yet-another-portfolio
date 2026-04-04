@@ -74,6 +74,32 @@ if (!blogPosts.length) {
 
 <Layout title="Rohan Mukherjee | Portfolio" description="Software Engineer at Cloudflare, ex-founding engineer at Dyte (YC W'21), open source contributor, and cybersecurity enthusiast.">
 
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rohan Mukherjee",
+    "url": "https://roerohan.com",
+    "image": "https://roerohan.com/images/dp.jpg",
+    "jobTitle": "Software Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Cloudflare"
+    },
+    "description": "Software Engineer at Cloudflare, ex-founding engineer at Dyte (YC W'21), open source contributor, and cybersecurity enthusiast.",
+    "knowsAbout": ["TypeScript", "Go", "Cloudflare Workers", "React", "Node.js", "WebRTC", "Docker", "Kubernetes"],
+    "sameAs": [
+      "https://github.com/roerohan",
+      "https://linkedin.com/in/roerohan",
+      "https://x.com/AceXenon",
+      "https://blog.roerohan.com"
+    ],
+    "email": "me@roerohan.com",
+    "alumniOf": {
+      "@type": "Organization",
+      "name": "Dyte (YC W'21)"
+    }
+  })} />
+
   <!-- Hero -->
   <section class="pt-16 pb-20 border-b border-border">
     <a href="/freelance" class="inline-flex items-center gap-1.5 text-[0.8125rem] px-3 py-1 border border-ink rounded-full text-ink font-sans w-fit font-medium mb-6">
@@ -122,7 +148,7 @@ if (!blogPosts.length) {
       <div class="bg-card-bg border border-card-border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover card-prose">
         <h3 class="text-base mb-2">Off-screen</h3>
         <p class="text-[0.9375rem] text-muted leading-[1.6]">
-          I'll say yes to pretty much any outdoor activity — mostly climbing and playing football. Indoors, I'm usually playing guitar or <a href="https://spotify.link/OCbg4u8UWDb">finding new music</a>.
+          I'll say yes to pretty much any outdoor activity — mostly climbing, playing football, and travelling. Indoors, I'm usually playing guitar or <a href="https://spotify.link/OCbg4u8UWDb">finding new music</a>.
         </p>
       </div>
       <div class="bg-card-bg border border-card-border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover card-prose">

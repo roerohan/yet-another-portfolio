@@ -30,6 +30,20 @@ const services = [
 
 <Layout title="Freelance Services | Rohan Mukherjee" description="Hire Rohan Mukherjee for full-stack development, backend engineering, security audits, and technical content. Engineer at Cloudflare, ex-founding engineer at Dyte (YC W'21)." showBack={true}>
 
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Freelance Development Services",
+    "provider": {
+      "@type": "Person",
+      "name": "Rohan Mukherjee",
+      "url": "https://roerohan.com"
+    },
+    "description": "Full-stack development, backend engineering, security audits, and technical content by a Cloudflare engineer and ex-founding engineer at Dyte (YC W'21).",
+    "url": "https://roerohan.com/freelance",
+    "serviceType": ["Full-stack Development", "Backend Engineering", "Security Audits", "Technical Consulting", "Content Writing"]
+  })} />
+
   <!-- Hero -->
   <section class="pt-16 pb-20 border-b border-border">
     <span class="inline-flex items-center gap-1.5 text-[0.8125rem] px-3 py-1 border border-ink rounded-full text-ink font-sans w-fit font-medium mb-6">
