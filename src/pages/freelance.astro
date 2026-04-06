@@ -8,7 +8,6 @@ const services = [
     title: 'Technical Consulting',
     description: 'Architecture reviews, code audits, and strategic technical guidance. I help teams make better decisions — and avoid the expensive mistakes I\'ve already seen.',
     tags: ['Architecture', 'Code Review', 'System Design', 'Performance'],
-    highlight: true,
   },
   {
     title: 'Full-Stack Applications',
@@ -84,10 +83,7 @@ const services = [
     <h2 class="font-sans text-xs uppercase tracking-[0.1em] text-muted mb-10 font-medium">What I Can Do For You</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {services.map((service) => (
-        <div class:list={[
-          'bg-card-bg border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover',
-          service.highlight ? 'border-muted' : 'border-card-border'
-        ]}>
+        <div class="bg-card-bg border border-card-border rounded-lg p-6 transition-[border-color] duration-200 ease-in-out hover:border-muted-hover">
           <h3 class="text-lg mb-2">{service.title}</h3>
           <p class="text-[0.9375rem] text-muted leading-[1.6]">{service.description}</p>
           <div class="flex flex-wrap gap-1.5 mt-3">
