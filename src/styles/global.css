@@ -55,6 +55,16 @@
   can override them when applied to elements.
 */
 @layer base {
+  ::selection {
+    background-color: #d4c5a9;
+    color: #1a1a1a;
+  }
+
+  [data-theme="dark"] ::selection {
+    background-color: #4a4335;
+    color: #ede9e3;
+  }
+
   html {
     scroll-behavior: smooth;
   }
